@@ -1,4 +1,5 @@
 { pkgs, self, ... }: {
+  security.pam.enableSudoTouchIdAuth = true;
   system = {
     stateVersion = 5;
 
@@ -16,7 +17,9 @@
       dock = {
         autohide = true;
         launchanim = true;
+        mru-spaces = false;
         orientation = "bottom";
+        persistent-others = [];
         show-recents = false;
         tilesize = 64;
       };
@@ -24,12 +27,25 @@
         _FXShowPosixPathInTitle = true;
       };
       NSGlobalDomain = {
+        # UI
         AppleInterfaceStyle = "Dark";
-        AppleShowAllExtensions = false;
+
+        # Mouse
         ApplePressAndHoldEnabled = true;
 
+        # System
+        AppleShowAllExtensions = false;
+
+        # Sound
         "com.apple.sound.beep.volume" = 0.0;
         "com.apple.sound.beep.feedback" = 0;
+
+        # Spellcheck
+        NSAutomaticCapitalizationEnabled = false;  
+        NSAutomaticDashSubstitutionEnabled = false;  
+        NSAutomaticPeriodSubstitutionEnabled = false;  
+        NSAutomaticQuoteSubstitutionEnabled = false;  
+        NSAutomaticSpellingCorrectionEnabled = false;
       };
       trackpad = {
         Clicking = true;
