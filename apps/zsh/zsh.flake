@@ -1,0 +1,32 @@
+{ pkgs, programs, ... }: {
+    programs.zsh = {
+        enable = true;
+        autosuggestion.enable = true;
+        enableCompletion = true;
+        shellAliases = {
+        cat = "bat";
+        diff = "difft";
+        du = "dust";
+        find = "fd";
+        ls = "ls --color=auto";
+        ll = "ls -la";
+        top = "btop";
+        update = "darwin-rebuild switch --flake /etc/nix-darwin";
+        };
+        plugins = [
+        {
+            name = "oh-my-posh";
+            src = pkgs.oh-my-posh;
+        }
+        ];
+
+        initExtraFirst = ''
+        export HISTIGNORE="pwd:ls:cd"
+        '';
+        
+        initExtra = ''
+        # Initialize oh-my-posh with a Nerd Font compatible theme
+        eval "$(oh-my-posh init zsh --config ${pkgs.oh-my-posh}/share/oh-my-posh/themes/agnoster.omp.json)"
+        '';
+    };
+}

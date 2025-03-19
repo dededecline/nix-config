@@ -4,5 +4,6 @@
     ./homebrew.nix
     ./packages.nix
     ./system.nix
+    ../apps
   ];
 }
