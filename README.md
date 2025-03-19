@@ -1,5 +1,23 @@
 # Nix-Darwin Configuration
 
+## Table of Contents
+- [Repository Structure](#repository-structure)
+- [Features](#features)
+- [Setup Tutorial](#setup-tutorial)
+  - [Prerequisites](#prerequisites)
+  - [Installation Steps](#installation-steps)
+  - [1Password Setup](#1password-setup)
+- [Usage Guide](#usage-guide)
+  - [Updating Your System](#updating-your-system)
+  - [Adding New Packages](#adding-new-packages)
+  - [Adding New Applications](#adding-new-applications)
+  - [Changing User Information](#changing-user-information)
+- [Customization](#customization)
+  - [System Preferences](#system-preferences)
+  - [Shell Configuration](#shell-configuration)
+  - [Git Configuration](#git-configuration)
+- [Troubleshooting](#troubleshooting)
+
 A declarative macOS system configuration using nix-darwin, home-manager, and homebrew.
 
 ## Repository Structure
