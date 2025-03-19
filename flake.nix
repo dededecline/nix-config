@@ -164,9 +164,6 @@
         };
       };
 
-      # Set Git commit hash for darwin-version.
-      system.configurationRevision = self.rev or self.dirtyRev or null;
-
       # Nixpkgs config
       nixpkgs = {
         hostPlatform = "aarch64-darwin";
@@ -181,7 +178,26 @@
       system = {
         stateVersion = 5;
 
+        activationScripts.postUserActivation.text = ''
+          # Following line should allow us to avoid a logout/login cycle when changing settings
+          /System/Library/PrivateFrameworks/SystemAdministration.framework/Resources/activateSettings -u
+        '';
+        
+        # Set Git commit hash for darwin-version.
+        configurationRevision = self.rev or self.dirtyRev or null;
+
         defaults = {
+          CustomUserPreferences = {
+            "com.apple.symbolichotkeys" = {
+              AppleSymbolicHotKeys = {
+                # Disable 'Cmd + Space' for Spotlight Search
+                "64" = {
+                  enabled = false;
+                };
+              };
+            };
+          };
+
           dock = {
             autohide = true;
             launchanim = true;
