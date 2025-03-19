@@ -38,7 +38,7 @@ A declarative macOS system configuration using nix-darwin, home-manager, and hom
 │   └── zsh/
 │       └── zsh.flake       # ZSH shell configuration
 ├── scripts/
-│   └── fetchEmailFrom1Passord.sh  # Script for 1Password email fetching
+│   └── fetchEmail.sh       # Script for 1Password email fetching
 └── README.md               # This file
 ```
 

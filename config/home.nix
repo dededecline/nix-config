@@ -10,9 +10,9 @@
       programs.home-manager.enable = true;
 
       home.activation = {
-        fetchEmailFrom1Password = let
+        fetchEmail = let
           op = "${pkgs._1password-cli}/bin/op";
-          scriptPath = ../scripts/fetchEmailFrom1Passord.sh;
+          scriptPath = ../scripts/fetchEmail.sh;
         in lib.hm.dag.entryAfter ["writeBoundary"] ''
           # Set environment variables for the script
           export OP_BIN="${op}"
