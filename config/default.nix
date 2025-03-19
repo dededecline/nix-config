@@ -1,6 +1,7 @@
 { pkgs, ... }: {
   imports = [
-    ./homebrew
-    ./home
+    ./home.nix
+    ./homebrew.nix
+    ./packages.nix
   ];
 }
