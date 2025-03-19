@@ -18,7 +18,7 @@
           diff = "difft";
           du = "dust";
           find = "fd";
-          ls = "ls --color=auto";
+          ls = "lsd --color=auto";
           ll = "ls -la";
           top = "btop";
           update = "darwin-rebuild switch --flake /etc/nix-darwin";

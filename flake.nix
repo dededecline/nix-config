@@ -85,6 +85,10 @@
         meslo-lgs-nf
         pngquant
 
+        # Nix Configuration
+        nil
+        statix
+
         # Node.js Development
         nodePackages.npm
         nodePackages.prettier
@@ -127,6 +131,7 @@
         du-dust
         iftop
         jq
+        lsd
         mas
         neofetch
         oh-my-posh
