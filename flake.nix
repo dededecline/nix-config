@@ -84,8 +84,6 @@
           allowUnsupportedSystem = false;
         };
       };
-
-      # System configuration moved to config/system.nix
     };
   in
   {
