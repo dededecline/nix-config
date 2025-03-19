@@ -18,9 +18,6 @@
     hack-font
     jpegoptim
     meslo-lgs-nf
-    (nerdfonts.override { 
-      fonts = [ "JetBrainsMono" "Hack" ]; 
-    })
     noto-fonts
     noto-fonts-emoji
     pngquant

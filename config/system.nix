@@ -1,5 +1,26 @@
 { pkgs, self, ... }: {
+  fonts.packages = with pkgs; [
+    dejavu_fonts
+    font-awesome
+    hack-font
+    noto-fonts
+    noto-fonts-emoji
+  ];
+
+  networking = {
+    dns = [
+      # AdGuard DNS
+      "94.140.14.14"
+      "94.140.15.15"
+    ];
+    knownNetworkServices = [
+      "Thunderbolt Bridge"
+      "Wi-Fi"
+    ];
+  };
+
   security.pam.enableSudoTouchIdAuth = true;
+
   system = {
     stateVersion = 5;
 
