@@ -51,7 +51,7 @@
     };
     
     # Configuration with variables
-    configuration = { pkgs, ... }: {
+    configuration = { pkgs, config, ... }: {
       networking = {
         inherit (host) hostName;
         inherit (host) localHostName;
@@ -137,6 +137,7 @@
         jq
         lsd
         mas
+        mkalias
         neofetch
         oh-my-posh
         syncthing
@@ -192,6 +193,7 @@
             _FXShowPosixPathInTitle = true;
           };
           NSGlobalDomain = {
+            AppleInterfaceStyle = "Dark";
             AppleShowAllExtensions = false;
             ApplePressAndHoldEnabled = true;
 

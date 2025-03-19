@@ -2,6 +2,5 @@
   imports = [
     ./homebrew
     ./home
-    ./op-git
   ];
 }
