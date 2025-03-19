@@ -53,9 +53,9 @@
     # Configuration with variables
     configuration = { pkgs, ... }: {
       networking = {
-        hostName = host.hostName;
-        localHostName = host.localHostName;
-        computerName = host.computerName;
+        inherit (host) hostName;
+        inherit (host) localHostName;
+        inherit (host) computerName;
       };
       
       users.users.${user.username} = {
@@ -218,8 +218,8 @@
         # Pass variables to other modules
         {
           _module.args = {
-            user = user;
-            host = host;
+            inherit user;
+            inherit host;
           };
         }
 
