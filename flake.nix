@@ -66,11 +66,17 @@
       nix = {
         gc = {
           automatic = true;
-          interval = { Weekday = 0; Hour = 2; Minute = 0; };
+          interval = { Hour = 5; Minute = 0; };
           options = "--delete-older-than 7d";
         };
+        optimise = {
+          automatic = true;
+          interval = { Hour = 6; Minute = 0; };
+        };
         settings = {
-          experimental-features = "nix-command flakes";
+          experimental-features = ''
+            flakes nix-command no-url-literals
+          '';
         };
       };
 

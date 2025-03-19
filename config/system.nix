@@ -19,6 +19,13 @@
     ];
   };
 
+  power = {
+    sleep = {
+      computer = 30;
+      display = 10;
+    };
+  };
+  
   security.pam.enableSudoTouchIdAuth = true;
 
   system = {

@@ -1,6 +1,7 @@
 { ... }: {
   imports = [
-    ./zsh/zsh.flake
+    ./aerospace/aerospace.flake
     ./git/git.flake
+    ./zsh/zsh.flake
   ];
-} 
+}

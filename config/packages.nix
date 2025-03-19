@@ -2,24 +2,23 @@
 
 {
   environment.systemPackages = with pkgs; [
-    # General Applications
-    appcleaner
+    # Communication
     discord
-    home-assistant-cli
     signal-desktop
     slack
     zoom-us
 
-    # Media Tools
+    # Fonts
     dejavu_fonts
-    ffmpeg
-    fd
     font-awesome
     hack-font
-    jpegoptim
     meslo-lgs-nf
     noto-fonts
     noto-fonts-emoji
+
+    # Media Tools
+    ffmpeg
+    jpegoptim
     pngquant
 
     # Nix Configuration
@@ -41,6 +40,9 @@
     # Security Tools
     _1password-cli
     openssh
+
+    # Smart Home
+    home-assistant-cli
 
     # Software Development
     act
@@ -68,6 +70,7 @@
     coreutils
     defaultbrowser
     du-dust
+    fd
     iftop
     jq
     lsd
@@ -83,6 +86,10 @@
     wireshark
     zip
     zsh
+
+    # System UI
+    aerospace
+    sketchybar
 
     # Text Editors
     vim
