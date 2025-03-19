@@ -52,7 +52,7 @@
           init.defaultBranch = "main";
           pull.rebase = true;
           rebase.autostash = true;
-          include.path = "~/.gitconfig";
+          include.path = "~/.gitconfig.user";
         };
       };
 
@@ -62,10 +62,15 @@
         in lib.hm.dag.entryAfter ["writeBoundary"] ''
           email=$(${op} item get "git-email" --fields email --reveal 2>/dev/null)
           if [ -n "$email" ]; then
-            echo "[user]" > ~/.gitconfig
-            echo "    name = Dani Klein" >> ~/.gitconfig
-            echo "    email = $email" >> ~/.gitconfig
-            echo "    username = dededecline" >> ~/.gitconfig
+            echo "[user]" > ~/.gitconfig.user
+            echo "    name = Dani Klein" >> ~/.gitconfig.user
+            echo "    email = $email" >> ~/.gitconfig.user
+            echo "    username = dededecline" >> ~/.gitconfig.user
+            
+            # Configure GitHub authentication
+            echo "[credential \"https://github.com\"]" >> ~/.gitconfig.user
+            echo "    helper = manager" >> ~/.gitconfig.user
+            echo "    username = dededecline" >> ~/.gitconfig.user
           fi
         '';
       };
@@ -77,4 +82,4 @@
       home.stateVersion = "24.11";
     };
   };
-} 
+}
