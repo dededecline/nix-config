@@ -15,7 +15,6 @@
     brews = [ ];
     casks = [
       "1password"
-      "alfred"
       "canva"
       "cursor"
       "meetingbar"
