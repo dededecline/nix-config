@@ -25,6 +25,10 @@
       url = "github:homebrew/homebrew-bundle";
       flake = false;
     };
+    albertlauncher-albert = {
+      url = "github:albertlauncher/homebrew-albert";
+      flake = false;
+    }
 
     lix-module = {
       url = "https://git.lix.systems/lix-project/nixos-module/archive/2.92.0-1.tar.gz";
@@ -68,7 +72,6 @@
         appcleaner
         discord
         home-assistant-cli
-        raycast
         signal-desktop
         slack
         zoom-us
@@ -154,6 +157,7 @@
       ];
 
       nix = {
+        # TODO: sudo nix-collect-garbage -d automation
         gc = {
           automatic = true;
           interval = { Weekday = 0; Hour = 2; Minute = 0; };
@@ -182,7 +186,7 @@
           # Following line should allow us to avoid a logout/login cycle when changing settings
           /System/Library/PrivateFrameworks/SystemAdministration.framework/Resources/activateSettings -u
         '';
-        
+
         # Set Git commit hash for darwin-version.
         configurationRevision = self.rev or self.dirtyRev or null;
 

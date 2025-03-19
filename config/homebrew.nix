@@ -12,15 +12,14 @@
       "homebrew/bundle"
       "homebrew/services"
     ];
-    brews = [
-
-    ];
+    brews = [ ];
     casks = [
       "1password"
       "canva"
       "cursor"
       "meetingbar"
       "notion"
+      "sol"
       "steam"
       "vlc"
       "zen-browser"
