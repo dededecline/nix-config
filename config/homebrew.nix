@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{ pkgs, user, host, ... }: {
   homebrew = {
     onActivation = {
       autoUpdate = true;

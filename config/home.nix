@@ -1,11 +1,11 @@
-{ config, pkgs, lib, ... }: {
+{ config, pkgs, lib, user, host, ... }: {
   home-manager = {
     useGlobalPkgs = true;
     useUserPackages = true;
 
-    users.daniklein = { pkgs, lib, ... }: {
-      home.username = "daniklein";
-      home.homeDirectory = "/Users/daniklein";
+    users.${user.username} = { pkgs, lib, ... }: {
+      home.username = user.username;
+      home.homeDirectory = user.homeDirectory;
       
       programs.home-manager.enable = true;
 
@@ -37,13 +37,13 @@
 
       programs.git = {
         enable = true;
-        userName = "dededecline";
+        userName = user.githubUsername;
         userEmail = ""; # Will be populated by 1Password
         extraConfig = {
           credential = {
             credentialStore = "cache";
             helper = "manager";
-            "https://github.com".username = "dededecline";
+            "https://github.com".username = user.githubUsername;
           };
           core = {
             editor = "code";
@@ -63,14 +63,14 @@
           email=$(${op} item get "git-email" --fields email --reveal 2>/dev/null)
           if [ -n "$email" ]; then
             echo "[user]" > ~/.gitconfig.user
-            echo "    name = Dani Klein" >> ~/.gitconfig.user
+            echo "    name = ${user.name}" >> ~/.gitconfig.user
             echo "    email = $email" >> ~/.gitconfig.user
-            echo "    username = dededecline" >> ~/.gitconfig.user
+            echo "    username = ${user.githubUsername}" >> ~/.gitconfig.user
             
             # Configure GitHub authentication
             echo "[credential \"https://github.com\"]" >> ~/.gitconfig.user
             echo "    helper = manager" >> ~/.gitconfig.user
-            echo "    username = dededecline" >> ~/.gitconfig.user
+            echo "    username = ${user.githubUsername}" >> ~/.gitconfig.user
           fi
         '';
       };

@@ -34,15 +34,32 @@
 
   outputs = inputs@{ self, lix-module, nix-darwin, nixpkgs, home-manager, nix-homebrew, homebrew-cask, homebrew-bundle, homebrew-core }:
   let
+    # Define common variables
+    user = {
+      name = "Dani Klein";
+      username = "daniklein";
+      githubUsername = "dededecline";
+    };
+
+    user.homeDirectory = "/Users/${user.username}";
+    
+    host = {
+      name = "Dededevice";
+      computerName = "Dededevice";
+      hostName = "Dededevice.local";
+      localHostName = "Dededevice";
+    };
+    
+    # Configuration with variables
     configuration = { pkgs, ... }: {
       networking = {
-        hostName = "Dededevice.local";
-        localHostName = "Dededevice";
-        computerName = "Dededevice";
+        hostName = host.hostName;
+        localHostName = host.localHostName;
+        computerName = host.computerName;
       };
       
-      users.users.daniklein = {
-        home = "/Users/daniklein";
+      users.users.${user.username} = {
+        home = user.homeDirectory;
         shell = pkgs.zsh;
       };
       
@@ -183,13 +200,21 @@
   {
     # Build darwin flake using:
     # $ darwin-rebuild build --flake .#Dededevice
-    darwinConfigurations."Dededevice" = nix-darwin.lib.darwinSystem {
+    darwinConfigurations.${host.name} = nix-darwin.lib.darwinSystem {
       modules = [ 
         configuration 
 
         home-manager.darwinModules.home-manager
         lix-module.nixosModules.default
         nix-homebrew.darwinModules.nix-homebrew
+
+        # Pass variables to other modules
+        {
+          _module.args = {
+            user = user;
+            host = host;
+          };
+        }
 
         ./config/home.nix
         ./config/homebrew.nix
@@ -203,7 +228,7 @@
             enableRosetta = false;
 
             # User owning the Homebrew prefix
-            user = "daniklein";
+            user = user.username;
 
             taps = {
               "homebrew/homebrew-core" = homebrew-core;
