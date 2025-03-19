@@ -129,12 +129,7 @@
     darwinConfigurations.${host.name} = nix-darwin.lib.darwinSystem {
       modules = [ 
         configuration
-
-        home-manager.darwinModules.home-manager
-        lix-module.nixosModules.default
-        nix-homebrew.darwinModules.nix-homebrew
-        mac-app-util.darwinModules.default
-
+        
         # Pass variables to other modules
         {
           _module.args = {
@@ -143,6 +138,11 @@
         }
 
         ./config/default.nix
+
+        home-manager.darwinModules.home-manager
+        lix-module.nixosModules.default
+        nix-homebrew.darwinModules.nix-homebrew
+        mac-app-util.darwinModules.default        
         
         {
           nix-homebrew = {
