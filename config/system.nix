@@ -2,7 +2,9 @@
   system = {
     stateVersion = 5;
 
-    activationScripts.postUserActivation.text = ''
+    activationScripts.postUserActivation.text = ''  
+      defaultbrowser zen
+      
       # Following line should allow us to avoid a logout/login cycle when changing settings
       /System/Library/PrivateFrameworks/SystemAdministration.framework/Resources/activateSettings -u
     '';

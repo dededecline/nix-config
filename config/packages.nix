@@ -69,6 +69,7 @@
     bat
     btop
     coreutils
+    defaultbrowser
     du-dust
     iftop
     jq
