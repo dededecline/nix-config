@@ -153,11 +153,10 @@
       ];
 
       nix = {
-        # TODO: sudo nix-collect-garbage -d automation
         gc = {
           automatic = true;
           interval = { Weekday = 0; Hour = 2; Minute = 0; };
-          options = "--delete-older-than 30d";
+          options = "--delete-older-than 7d";
         };
         settings = {
           experimental-features = "nix-command flakes";
@@ -187,17 +186,6 @@
         configurationRevision = self.rev or self.dirtyRev or null;
 
         defaults = {
-          CustomUserPreferences = {
-            "com.apple.symbolichotkeys" = {
-              AppleSymbolicHotKeys = {
-                # Toggle 'Cmd + Space' for Spotlight Search
-                "64" = {
-                  enabled = true;
-                };
-              };
-            };
-          };
-
           dock = {
             autohide = true;
             launchanim = true;
@@ -229,7 +217,7 @@
     # $ darwin-rebuild build --flake .#Dededevice
     darwinConfigurations.${host.name} = nix-darwin.lib.darwinSystem {
       modules = [ 
-        configuration 
+        configuration
 
         home-manager.darwinModules.home-manager
         lix-module.nixosModules.default
