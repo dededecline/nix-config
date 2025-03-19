@@ -98,43 +98,6 @@
           # Clear font cache
           atsutil databases -remove 2>/dev/null || true
         '';
-        
-        configureCursor = lib.hm.dag.entryAfter ["writeBoundary"] ''
-          CURSOR_SETTINGS_DIR="$HOME/Library/Application Support/Cursor/User"
-          mkdir -p "$CURSOR_SETTINGS_DIR"
-          
-          # Create or update settings.json for Cursor
-          SETTINGS_FILE="$CURSOR_SETTINGS_DIR/settings.json"
-          
-          # Read existing settings if file exists
-          if [ -f "$SETTINGS_FILE" ]; then
-            # Backup existing settings
-            cp "$SETTINGS_FILE" "$SETTINGS_FILE.backup"
-            # Update settings using jq if available, otherwise create new
-            if command -v jq >/dev/null 2>&1; then
-              jq '.editor.fontFamily = "\"JetBrainsMono Nerd Font\", \"Hack Nerd Font\", monospace" | 
-                  .editor.fontSize = 14 | 
-                  .editor.fontLigatures = true | 
-                  .terminal.integrated.fontFamily = "\"JetBrainsMono Nerd Font\", \"Hack Nerd Font\", monospace"' \
-                  "$SETTINGS_FILE" > "$SETTINGS_FILE.tmp" && mv "$SETTINGS_FILE.tmp" "$SETTINGS_FILE"
-            else
-              echo '{
-                "editor.fontFamily": "\"JetBrainsMono Nerd Font\", \"Hack Nerd Font\", monospace",
-                "editor.fontSize": 14,
-                "editor.fontLigatures": true,
-                "terminal.integrated.fontFamily": "\"JetBrainsMono Nerd Font\", \"Hack Nerd Font\", monospace"
-              }' > "$SETTINGS_FILE"
-            fi
-          else
-            # Create new settings file
-            echo '{
-              "editor.fontFamily": "\"JetBrainsMono Nerd Font\", \"Hack Nerd Font\", monospace",
-              "editor.fontSize": 14,
-              "editor.fontLigatures": true,
-              "terminal.integrated.fontFamily": "\"JetBrainsMono Nerd Font\", \"Hack Nerd Font\", monospace"
-            }' > "$SETTINGS_FILE"
-          fi
-        '';
       };
 
       # This value determines the Home Manager release that your

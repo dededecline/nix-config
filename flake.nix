@@ -67,6 +67,7 @@
         # General Applications
         appcleaner
         discord
+        home-assistant-cli
         raycast
         signal-desktop
         slack
@@ -89,6 +90,7 @@
 
         # Nix Configuration
         nil
+        nixfmt-rfc-style
         statix
 
         # Node.js Development
