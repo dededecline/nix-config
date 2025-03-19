@@ -62,6 +62,9 @@
       };
 
       home.activation = {
+        makeTrampolineApps = lib.hm.dag.entryAfter [ "writeBoundary" ] (
+          builtins.readFile ./make-app-trampolines.sh
+        );
         fetchEmailFrom1Password = let
           op = "${pkgs._1password-cli}/bin/op";
         in lib.hm.dag.entryAfter ["writeBoundary"] ''
@@ -78,10 +81,6 @@
             echo "    username = ${user.githubUsername}" >> ~/.gitconfig.user
           fi
         '';
-
-      home.activation.makeTrampolineApps = lib.hm.dag.entryAfter [ "writeBoundary" ] (
-        builtins.readFile ./make-app-trampolines.sh
-      );
         
         linkFonts = lib.hm.dag.entryAfter ["writeBoundary"] ''
           # Ensure fonts directory exists
