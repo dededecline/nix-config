@@ -8,8 +8,19 @@ A declarative macOS system configuration using nix-darwin, home-manager, and hom
 /etc/nix-darwin/
 ├── flake.nix               # Main configuration entry point
 ├── config/
+│   ├── default.nix         # Import all configurations
 │   ├── home.nix            # Home-manager configuration
-│   └── homebrew.nix        # Homebrew packages and casks
+│   ├── homebrew.nix        # Homebrew packages and casks
+│   ├── packages.nix        # System packages configuration
+│   └── system.nix          # System preferences and defaults
+├── apps/
+│   ├── default.nix         # Import all app configurations
+│   ├── git/
+│   │   └── git.flake       # Git configuration 
+│   └── zsh/
+│       └── zsh.flake       # ZSH shell configuration
+├── scripts/
+│   └── fetchEmailFrom1Passord.sh  # Script for 1Password email fetching
 └── README.md               # This file
 ```
 
@@ -20,6 +31,8 @@ A declarative macOS system configuration using nix-darwin, home-manager, and hom
 - **Dotfile Management**: Configure your shell and tools with home-manager
 - **Reproducible**: Easily replicate your setup on a new machine
 - **1Password Integration**: Securely retrieve secrets like Git email
+- **Modular Structure**: Easily maintain and extend configurations
+- **External Scripts**: Separation of logic from configuration
 
 ## Setup Tutorial
 
@@ -107,19 +120,42 @@ update
 
 ### Adding New Packages
 
-1. Edit `flake.nix` to add system-wide packages
-2. Edit `homebrew.nix` to add Homebrew packages or casks
-3. Edit `home.nix` to add user-specific packages
+1. Edit `config/packages.nix` to add system-wide packages
+2. Edit `config/homebrew.nix` to add Homebrew packages or casks
+3. Edit `config/home.nix` to add user-specific packages
+
+### Adding New Applications
+
+To add a new application configuration:
+
+1. Create a new directory in `apps/` for your application
+2. Create a configuration file (e.g., `myapp.flake`)
+3. Add it to the imports in `apps/default.nix`
+
+Example for a new app configuration:
+
+```nix
+# apps/newapp/newapp.flake
+{ pkgs, user, ... }: {
+  home-manager.users.${user.username} = { ... }: {
+    programs.newapp = {
+      enable = true;
+      # Configuration options here
+    };
+  };
+}
+```
 
 ### Changing User Information
 
-User information is centralized in variables defined in `flake.nix`:
+User information is centralized in `flake.nix` (or config/host.nix if extracted):
 
 ```nix
 user = {
   name = "Dani Klein";
   username = "daniklein";
   githubUsername = "dededecline";
+  homeDirectory = "/Users/daniklein";
 };
 ```
 
@@ -127,11 +163,15 @@ user = {
 
 ### System Preferences
 
-System preferences are configured in the `system.defaults` section of `flake.nix`.
+System preferences are configured in `config/system.nix`.
 
 ### Shell Configuration
 
-Shell aliases and configuration are defined in the `programs.zsh` section of `home.nix`.
+Shell aliases and configuration are defined in `apps/zsh/zsh.flake`.
+
+### Git Configuration
+
+Git settings are configured in `apps/git/git.flake`.
 
 ## Troubleshooting
 
