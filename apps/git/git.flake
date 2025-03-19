@@ -20,7 +20,7 @@
     };
   };
 
-  home.activation = {
+  home.activation = { lib, ... }: {
     fetchEmailFrom1Password = let
       op = "${pkgs._1password-cli}/bin/op";
     in lib.hm.dag.entryAfter ["writeBoundary"] ''
