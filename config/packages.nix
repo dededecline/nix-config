@@ -89,6 +89,7 @@
 
     # System UI
     aerospace
+    jankyborders
     sketchybar
 
     # Text Editors

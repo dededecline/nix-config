@@ -63,7 +63,11 @@
         backspace = ["close-all-windows-but-current" "mode main"];
       };
 
-      after-startup-command = ["exec-and-forget sketchybar"];
+      # TODO: Additional sketchybar config
+      after-startup-command = [
+        "exec-and-forget sketchybar"
+        "exec-and-forget borders active_color=0xffe1e3e4 inactive_color=0xff494d64 width=5.0"
+      ];
 
       on-window-detected = [
         {

@@ -54,6 +54,7 @@
       finder = {
         _FXShowPosixPathInTitle = true;
       };
+      LaunchServices.LSQuarantine = false;
       NSGlobalDomain = {
         # UI
         AppleInterfaceStyle = "Dark";
