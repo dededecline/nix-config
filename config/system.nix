@@ -42,6 +42,10 @@
     configurationRevision = self.rev or self.dirtyRev or null;
 
     defaults = {
+      controlcenter = {
+        BatteryShowPercentage = true;
+        Bluetooth = true;
+      };
       dock = {
         autohide = true;
         launchanim = true;
@@ -56,15 +60,23 @@
       };
       LaunchServices.LSQuarantine = false;
       NSGlobalDomain = {
+        # Finder
+        NSNavPanelExpandedStateForSaveMode = true;
+        NSNavPanelExpandedStateForSaveMode2 = true;
+        NSTableViewDefaultSizeMode = 1; # Small
+
         # UI
         AppleInterfaceStyle = "Dark";
+        _HIHideMenuBar = true;
 
         # Mouse
-        ApplePressAndHoldEnabled = true;
+        ApplePressAndHoldEnabled = false;
 
         # System
         AppleShowAllExtensions = false;
-
+        AppleShowAllFiles = true;
+        NSDisableAutomaticTermination = false;
+        
         # Sound
         "com.apple.sound.beep.volume" = 0.0;
         "com.apple.sound.beep.feedback" = 0;
