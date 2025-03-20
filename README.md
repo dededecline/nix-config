@@ -16,6 +16,7 @@
   - [System Preferences](#system-preferences)
   - [Shell Configuration](#shell-configuration)
   - [Git Configuration](#git-configuration)
+  - [Window Management](#window-management)
 - [Troubleshooting](#troubleshooting)
 
 A declarative macOS system configuration using nix-darwin, home-manager, and homebrew.
@@ -33,6 +34,8 @@ A declarative macOS system configuration using nix-darwin, home-manager, and hom
 │   └── system.nix          # System preferences and defaults
 ├── apps/
 │   ├── default.nix         # Import all app configurations
+│   ├── aerospace/
+│   │   └── aerospace.flake # Aerospace window manager configuration
 │   ├── git/
 │   │   └── git.flake       # Git configuration 
 │   └── zsh/
@@ -51,6 +54,7 @@ A declarative macOS system configuration using nix-darwin, home-manager, and hom
 - **1Password Integration**: Securely retrieve secrets like Git email
 - **Modular Structure**: Easily maintain and extend configurations
 - **External Scripts**: Separation of logic from configuration
+- **Window Management**: Tiling window management with Aerospace
 
 ## Setup Tutorial
 
@@ -190,6 +194,16 @@ Shell aliases and configuration are defined in `apps/zsh/zsh.flake`.
 ### Git Configuration
 
 Git settings are configured in `apps/git/git.flake`.
+
+### Window Management
+
+Aerospace window manager settings are configured in `apps/aerospace/aerospace.flake`. This includes:
+
+- Keyboard shortcuts for window manipulation
+- Gap and padding settings
+- Window layouts and workspace configuration
+- Application-specific rules
+- Integration with sketchybar and borders
 
 ## Troubleshooting
 
