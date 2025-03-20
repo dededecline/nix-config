@@ -10,17 +10,17 @@
       programs.home-manager.enable = true;
 
       home.activation = {
-        fetchEmail = let
+        fetch-email = let
           op = "${pkgs._1password-cli}/bin/op";
-          scriptPath = ../scripts/fetchEmail.sh;
+          emailScriptPath = ../scripts/fetch-email.sh;
         in lib.hm.dag.entryAfter ["writeBoundary"] ''
-          # Set environment variables for the script
+          # Set environment variables for the email fetch script
           export OP_BIN="${op}"
           export USER_NAME="${user.name}"
           export GITHUB_USERNAME="${user.githubUsername}"
           
-          # Execute the script
-          bash ${scriptPath}
+          # Execute the scripts
+          bash ${emailScriptPath}
         '';
       };
 
