@@ -68,7 +68,7 @@ A declarative macOS system configuration using nix-darwin, home-manager, and hom
 1. Install Nix package manager using Lix (recommended):
 
    ```bash
-   curl -sSf -L https://install.lix.systems/lix | sh -s -- install
+   curl -sSf -L https://install.lix.systems/lix | sh -s -- install --nix-build-group-id 30000
    ```
    
    - Answer `Y` when prompted to install Nix
