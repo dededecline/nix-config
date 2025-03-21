@@ -3,17 +3,17 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-24.11-darwin";
-    nix-darwin.url = "github:LnL7/nix-darwin/nix-darwin-24.11";
-    nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
     mac-app-util.url = "github:hraban/mac-app-util";
-    
+    nix-homebrew.url = "github:zhaofengli-wip/nix-homebrew"; 
+
+    nix-darwin = {
+      url = "github:LnL7/nix-darwin/nix-darwin-24.11";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     home-manager = {
       url = "github:nix-community/home-manager/release-24.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    
-    nix-homebrew.url = "github:zhaofengli-wip/nix-homebrew"; 
-    
     homebrew-core = {
       url = "github:homebrew/homebrew-core";
       flake = false;
@@ -34,23 +34,10 @@
 
   outputs = inputs@{ self, lix-module, nix-darwin, nixpkgs, home-manager, nix-homebrew, homebrew-cask, homebrew-bundle, homebrew-core, mac-app-util }:
   let
-    # Define common variables
-    user = {
-      name = "Dani Klein";
-      username = "daniklein";
-      githubUsername = "dededecline";
-    };
-
-    user.homeDirectory = "/Users/${user.username}";
+    userAndHost = import ./config/user-and-host.nix;
+    inherit (userAndHost) user;
+    inherit (userAndHost) host;
     
-    host = {
-      name = "Dededevice";
-      computerName = "Dededevice";
-      hostName = "Dededevice.local";
-      localHostName = "Dededevice";
-    };
-    
-    # Configuration with variables
     configuration = { pkgs, config, ... }: {
       networking = {
         inherit (host) hostName;
@@ -80,7 +67,6 @@
         };
       };
 
-      # Nixpkgs config
       nixpkgs = {
         hostPlatform = "aarch64-darwin";
         config = {
@@ -93,8 +79,6 @@
     };
   in
   {
-    # Build darwin flake using:
-    # $ darwin-rebuild build --flake .#Dededevice
     darwinConfigurations.${host.name} = nix-darwin.lib.darwinSystem {
       modules = [ 
         configuration
@@ -115,13 +99,11 @@
         
         {
           nix-homebrew = {
-            # Install Homebrew under the default prefix
             enable = true;
 
             # Apple Silicon Only: Also install Homebrew under the default Intel prefix for Rosetta 2
             enableRosetta = false;
 
-            # User owning the Homebrew prefix
             user = user.username;
 
             taps = {
