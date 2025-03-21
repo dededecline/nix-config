@@ -51,7 +51,7 @@ A declarative macOS system configuration using nix-darwin, home-manager, and hom
 - **Package Management**: Manage packages with Nix and Homebrew
 - **Dotfile Management**: Configure your shell and tools with home-manager
 - **Reproducible**: Easily replicate your setup on a new machine
-- **1Password Integration**: Securely retrieve secrets like Git email
+- **1Password Integration**: Securely retrieve secrets from 1Password
 - **Modular Structure**: Easily maintain and extend configurations
 - **External Scripts**: Separation of logic from configuration
 - **Window Management**: Tiling window management with Aerospace
