@@ -1,16 +1,13 @@
+# Define common variables for user and host
+# This file centralizes personal and machine-specific configuration
 {
-  # Define common variables for user and host
-  # This file centralizes personal and machine-specific configuration
-  
-  # User information
   user = {
     name = "Dani Klein";
     username = "daniklein";
     githubUsername = "dededecline";
     homeDirectory = "/Users/daniklein";
   };
-  
-  # Host information
+
   host = {
     name = "Dededevice";
     computerName = "Dededevice";

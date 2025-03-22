@@ -25,7 +25,7 @@
       display = 10;
     };
   };
-  
+
   security.pam.enableSudoTouchIdAuth = true;
 
   system = {
@@ -51,7 +51,7 @@
         launchanim = true;
         mru-spaces = false;
         orientation = "bottom";
-        persistent-others = [];
+        persistent-others = [ ];
         show-recents = false;
         tilesize = 64;
       };
@@ -76,16 +76,16 @@
         AppleShowAllExtensions = false;
         AppleShowAllFiles = true;
         NSDisableAutomaticTermination = false;
-        
+
         # Sound
         "com.apple.sound.beep.volume" = 0.0;
         "com.apple.sound.beep.feedback" = 0;
 
         # Spellcheck
-        NSAutomaticCapitalizationEnabled = false;  
-        NSAutomaticDashSubstitutionEnabled = false;  
-        NSAutomaticPeriodSubstitutionEnabled = false;  
-        NSAutomaticQuoteSubstitutionEnabled = false;  
+        NSAutomaticCapitalizationEnabled = false;
+        NSAutomaticDashSubstitutionEnabled = false;
+        NSAutomaticPeriodSubstitutionEnabled = false;
+        NSAutomaticQuoteSubstitutionEnabled = false;
         NSAutomaticSpellingCorrectionEnabled = false;
       };
       trackpad = {

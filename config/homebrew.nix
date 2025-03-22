@@ -1,4 +1,4 @@
-{ pkgs, user, host, ... }: {
+_: {
   homebrew = {
     onActivation = {
       autoUpdate = true;
@@ -14,13 +14,30 @@
     ];
     brews = [ ];
     casks = [
-      "1password"
+      # Creativity
       "canva"
-      "cursor"
-      "meetingbar"
-      "notion"
+
+      # Gaming
       "steam"
+
+      # Media
       "vlc"
+
+      # Security
+      "1password"
+      "protonvpn"
+
+      # Software Development
+      "cursor"
+
+      # System Configuration
+      "meetingbar"
+      "proton-mail-bridge"
+
+      # Productivity
+      "notion"
+      "proton-drive"
+      "proton-mail"
       "zen-browser"
     ];
     masApps = {

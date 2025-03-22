@@ -23,8 +23,6 @@
 
     # Nix Configuration
     nil
-    nixfmt-rfc-style
-    statix
 
     # Node.js Development
     nodePackages.npm
