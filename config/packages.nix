@@ -62,6 +62,7 @@
     sqlite
     tableplus
     tflint
+    utm
 
     # System Management
     bat

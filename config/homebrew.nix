@@ -19,11 +19,11 @@ _: {
       # Creativity
       "canva"
 
+      # Smart Home
+      "home-assistant"
+
       # Gaming
       "steam"
-
-      # Media
-      "vlc"
 
       # Security
       "1password"
@@ -43,14 +43,11 @@ _: {
       "zen-browser"
     ];
     masApps = {
-      "Amphetamine" = 937984704;
-      "Home Assistant" = 1099568401;
       "Okta Verify" = 490179405;
       "Parcel" = 639968404;
       "Perplexity" = 6714467650;
       "Reeder" = 1529448980;
       "Tot" = 1491071483;
-      "UTM" = 1538878817;
     };
   };
 }
