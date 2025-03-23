@@ -33,6 +33,7 @@
 
     activationScripts.postUserActivation.text = ''  
       defaultbrowser zen
+      /opt/homebrew/bin/displayplacer "id:1 res:2056x1329 hz:120 color_depth:8 scaling:on origin:0,0 degree:0"
       
       # Following line should allow us to avoid a logout/login cycle when changing settings
       /System/Library/PrivateFrameworks/SystemAdministration.framework/Resources/activateSettings -u
@@ -73,6 +74,10 @@
       };
       finder = {
         _FXShowPosixPathInTitle = true;
+        CreateDesktop = false;
+        FXEnableExtensionChangeWarning = false;
+        FXDefaultSearchScope = "SCcf"; # Search current folder by default
+        QuitMenuItem = true;
       };
       LaunchServices.LSQuarantine = false;
       NSGlobalDomain = {
@@ -80,7 +85,7 @@
         NSNavPanelExpandedStateForSaveMode = true;
         NSNavPanelExpandedStateForSaveMode2 = true;
         NSTableViewDefaultSizeMode = 1; # Small
-
+        
         # UI
         AppleInterfaceStyle = "Dark";
         _HIHideMenuBar = true;

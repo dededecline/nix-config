@@ -12,7 +12,9 @@ _: {
       "homebrew/bundle"
       "homebrew/services"
     ];
-    brews = [ ];
+    brews = [ 
+      "displayplacer"
+    ];
     casks = [
       # Creativity
       "canva"
