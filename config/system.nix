@@ -85,7 +85,7 @@
         NSNavPanelExpandedStateForSaveMode = true;
         NSNavPanelExpandedStateForSaveMode2 = true;
         NSTableViewDefaultSizeMode = 1; # Small
-        
+
         # UI
         AppleInterfaceStyle = "Dark";
         _HIHideMenuBar = true;
