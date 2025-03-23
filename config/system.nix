@@ -46,6 +46,22 @@
         BatteryShowPercentage = true;
         Bluetooth = true;
       };
+      CustomUserPreferences = {
+        # Easiest way to figure these values out is to set them manually
+        # Then run `defaults read com.apple.symbolichotkeys AppleSymbolicHotKeys`
+        "com.apple.symbolichotkeys" = {
+          AppleSymbolicHotkeys = {
+            # Sets 'copy selected screenshot area to clipboard' shortcut to cmd+ctrl+w
+            "31" = {
+              enabled = true;
+              value = {
+                parameters = [ 119 13 1310720 ];
+                type = "standard";
+              };
+            };
+          };
+        };
+      };
       dock = {
         autohide = true;
         launchanim = true;
@@ -87,6 +103,12 @@
         NSAutomaticPeriodSubstitutionEnabled = false;
         NSAutomaticQuoteSubstitutionEnabled = false;
         NSAutomaticSpellingCorrectionEnabled = false;
+      };
+      screencapture = {
+        disable-shadow = true;
+        show-thumbnail = false;
+        target = "clipboard";
+        type = "png";
       };
       trackpad = {
         Clicking = true;

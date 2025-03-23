@@ -6,7 +6,8 @@
     mac-app-util.url = "github:hraban/mac-app-util";
     nix-homebrew.url = "github:zhaofengli-wip/nix-homebrew";
 
-    nix-formatter-pack = { # use by running `nix fmt`
+    nix-formatter-pack = {
+      # use by running `nix fmt`
       url = "github:Gerschtli/nix-formatter-pack";
       inputs.nixpkgs.follows = "nixpkgs";
     };
