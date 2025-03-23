@@ -18,6 +18,7 @@
 
     # Media Tools
     ffmpeg
+    iina
     jpegoptim
     pngquant
 
