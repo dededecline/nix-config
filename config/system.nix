@@ -33,7 +33,9 @@
 
     activationScripts.postUserActivation.text = ''  
       defaultbrowser zen
-      /opt/homebrew/bin/displayplacer "id:1 res:2056x1329 hz:120 color_depth:8 scaling:on origin:0,0 degree:0"
+      
+      # Run display mode optimization script
+      ${self}/scripts/display-mode.sh
       
       # Following line should allow us to avoid a logout/login cycle when changing settings
       /System/Library/PrivateFrameworks/SystemAdministration.framework/Resources/activateSettings -u
