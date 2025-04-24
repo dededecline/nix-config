@@ -19,6 +19,10 @@ _: {
       # Creativity
       "canva"
 
+      # Keyboards
+      "via"
+      "vial"
+
       # Smart Home
       "home-assistant"
 
