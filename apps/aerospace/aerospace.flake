@@ -3,12 +3,12 @@
     enable = true;
     settings = {
       gaps = {
-        inner.horizontal = 10;
-        inner.vertical = 10;
-        outer.left = 10;
-        outer.bottom = 10;
-        outer.top = 10;
-        outer.right = 10;
+        inner.horizontal = 2;
+        inner.vertical = 2;
+        outer.left = 2;
+        outer.bottom = 2;
+        outer.top = 2;
+        outer.right = 2;
       };
 
       mode.main.binding = {
@@ -71,19 +71,19 @@
 
       on-window-detected = [
         {
-          "if".app-name-regex-substring = "Zoom";
+          "if".app-id = "us.zoom.xos";
           run = [ "layout floating" ];
         }
         {
-          "if".app-name-regex-substring = "1Password";
+          "if".app-id = "com.1password.1password";
           run = [ "layout floating" ];
         }
         {
-          "if".app-name-regex-substring = "Finder";
+          "if".app-id = "com.apple.finder";
           run = [ "layout floating" ];
         }
         {
-          "if".app-name-regex-substring = "Tot";
+          "if".app-id = "com.iconfactory.Tot";
           run = [ "layout floating" ];
         }
       ];

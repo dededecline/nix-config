@@ -32,6 +32,7 @@
       # incompatible changes.
       home.stateVersion = "24.11";
 
+      # Aerospace makes mission control unusable unless apps are grouped
       targets.darwin.defaults."com.apple.dock".expose-group-apps = true;
     };
   };
