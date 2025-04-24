@@ -31,6 +31,8 @@
       # when a new Home Manager release introduces backwards
       # incompatible changes.
       home.stateVersion = "24.11";
+
+      targets.darwin.defaults."com.apple.dock".expose-group-apps = true;
     };
   };
 }
