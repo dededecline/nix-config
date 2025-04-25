@@ -13,11 +13,12 @@ declare -A MAS_APPS=(
 
 # Function to get current mas version
 get_current_version() {
-  if ! command -v mas &> /dev/null; then
+  local mas_path="/usr/local/bin/mas"
+  if ! [ -x "$mas_path" ]; then # Check if the file exists and is executable
     echo "not_installed"
     return
   fi
-  mas version
+  "$mas_path" version # Get version using the specific path
 }
 
 # Function to get latest version and package URL from GitHub
