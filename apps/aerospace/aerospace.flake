@@ -60,10 +60,7 @@
         "1" = "main";
         "2" = "main";
         "3" = "main";
-        "4" = [
-          "secondary"
-          "main"
-        ];
+        "4" = "main";
         "5" = [
           "secondary"
           "main"
@@ -83,28 +80,84 @@
 
       on-window-detected = [
         {
+          # Zoom
           "if".app-id = "us.zoom.xos";
           run = [ "layout floating" ];
         }
         {
+          # 1Password
           "if".app-id = "com.1password.1password";
           run = [ "layout floating" ];
         }
         {
+          # Finder
           "if".app-id = "com.apple.finder";
           run = [ "layout floating" ];
         }
         {
+          # Tot
           "if".app-id = "com.iconfactory.Tot";
           run = [ "layout floating" ];
         }
         {
+          # VIA
           "if".app-id = "org.via.configurator";
           run = [ "layout floating" ];
         }
         {
+          # VIAL
           "if".app-name-regex-substring = "Vial";
           run = [ "layout floating" ];
+        }
+        {
+          # Proton Mail Bridge
+          "if".app-id = "com.protonmail.bridge";
+          run = [ "layout floating" ];
+        }
+        {
+          # Steam
+          "if".app-id = "com.valvesoftware.steam";
+          run = [ "layout floating" ];
+        }
+        {
+          # Mail
+          "if".app-id = "com.apple.mail";
+          run = [ "move-node-to-workspace 1" ];
+        }
+        {
+          # Calendar
+          "if".app-id = "com.apple.iCal";
+          run = [ "move-node-to-workspace 1" ];
+        }
+        {
+          # Proton Mail
+          "if".app-id = "ch.protonmail.desktop";
+          run = [ "move-node-to-workspace 1" ];
+        }
+        {
+          # Discord
+          "if".app-id = "com.hnc.Discord";
+          run = [ "move-node-to-workspace 2" ];
+        }
+        {
+          # Messages
+          "if".app-id = "com.apple.MobileSMS";
+          run = [ "move-node-to-workspace 2" ];
+        }
+        {
+          # Slack
+          "if".app-id = "com.tinyspeck.slackmacgap";
+          run = [ "move-node-to-workspace 3" ];
+        }
+        {
+          # Signal
+          "if".app-id = "org.whispersystems.signal-desktop";
+          run = [ "move-node-to-workspace 3" ];
+        }
+        {
+          # Perplexity
+          "if".app-id = "ai.perplexity.mac";
+          run = [ "move-node-to-workspace 4" ];
         }
       ];
 

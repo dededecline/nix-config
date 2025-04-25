@@ -74,7 +74,6 @@
     iftop
     jq
     lsd
-    mas
     mkalias
     neofetch
     oh-my-posh
