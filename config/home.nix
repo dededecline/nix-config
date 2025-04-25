@@ -30,7 +30,7 @@
       # configuration is compatible with. This helps avoid breakage
       # when a new Home Manager release introduces backwards
       # incompatible changes.
-      home.stateVersion = "24.11";
+      home.stateVersion = "25.05";
 
       # Aerospace makes mission control unusable unless apps are grouped
       targets.darwin.defaults."com.apple.dock".expose-group-apps = true;

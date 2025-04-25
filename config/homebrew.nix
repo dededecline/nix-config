@@ -16,6 +16,9 @@ _: {
       "displayplacer"
     ];
     casks = [
+      # Communications
+      "signal"
+      
       # Creativity
       "canva"
 

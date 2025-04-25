@@ -4,7 +4,6 @@
   environment.systemPackages = with pkgs; [
     # Communication
     discord
-    signal-desktop
     slack
     zoom-us
 
@@ -74,7 +73,6 @@
     iftop
     jq
     lsd
-    mas
     mkalias
     neofetch
     oh-my-posh
