@@ -33,6 +33,9 @@
 
     activationScripts.postUserActivation.text = ''  
       defaultbrowser zen
+
+      # (Workaround) install mas manually
+      ${self}/scripts/manage-mas.sh
       
       # Run display mode optimization script
       ${self}/scripts/display-mode.sh

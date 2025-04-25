@@ -46,12 +46,7 @@ _: {
       "proton-mail"
       "zen-browser"
     ];
-    masApps = {
-      "Okta Verify" = 490179405;
-      "Parcel" = 639968404;
-      "Perplexity" = 6714467650;
-      "Reeder" = 1529448980;
-      "Tot" = 1491071483;
-    };
+    # Mac App Store apps are now managed by scripts/manage-mas.sh
+    # until nix 25.05 is stable
   };
 }
