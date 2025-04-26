@@ -32,6 +32,8 @@ default=(
   icon.padding_right=4
   padding_left=4
   padding_right=4
+
+  updates=when_shown
 )
 
 sketchybar \
