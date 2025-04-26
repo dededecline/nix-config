@@ -10,6 +10,7 @@ bar=(
   color=0xff1e1e2e  # Catppuccin Base
   sticky=off
   blur_radius=2
+  font_smoothing=on
 )
 
 default=(
@@ -29,8 +30,8 @@ default=(
   label.padding_right=4
   icon.padding_left=4
   icon.padding_right=4
-  padding_left=12
-  padding_right=12
+  padding_left=4
+  padding_right=4
 )
 
 sketchybar \
@@ -53,8 +54,12 @@ for sid in $(aerospace list-workspaces --all); do
         icon.font="sketchybar-app-font:Regular:8.0" \
         label="${sid}" \
         label.drawing=on \
+        label.align=center \
+        label.width=20 \
+        label.padding_right=12 \
+        label.y_offset=-1 \
         drawing=on \
-        update_freq=15 \
+        update_freq=5 \
         click_script="aerospace workspace ${sid}" \
         script="aerospace_plugin ${sid}"
     # Trigger initial update for this space
@@ -64,8 +69,8 @@ done
 sketchybar \
   --add bracket spaces '/space\..*/' \
   --set spaces \
-  padding_left=6 \
-  padding_right=6
+  padding_left=2 \
+  padding_right=2
 
 
 sketchybar \
