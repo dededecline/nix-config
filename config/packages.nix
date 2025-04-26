@@ -54,6 +54,7 @@
     gh
     git
     git-credential-manager
+    gnugrep
     go
     google-cloud-sdk
     gopls

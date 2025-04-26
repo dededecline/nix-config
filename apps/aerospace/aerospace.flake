@@ -1,4 +1,11 @@
-{ pkgs, ... }: {
+{ pkgs, ... }: 
+let
+  sb = "${pkgs.sketchybar}/bin/sketchybar";
+  modeBadge = icon: drawing: "exec-and-forget ${sb} --set mode icon=${icon} drawing=${drawing}";
+  trigger-workspace-change = "${sb} --trigger aerospace_workspace_change";
+  exec-twc = "exec-and-forget ${trigger-workspace-change}";
+in
+{
   services.aerospace = {
     enable = true;
     settings = {
@@ -74,8 +81,10 @@
       exec-on-workspace-change = [
         "/bin/bash"
         "-c"
-        "/run/current-system/sw/bin/sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE"
+        "${trigger-workspace-change} FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE"
       ];
+
+      automatically-unhide-macos-hidden-apps = true;
 
       mode.service.binding = {
         esc = ["reload-config" "mode main"];
