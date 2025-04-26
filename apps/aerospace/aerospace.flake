@@ -71,6 +71,12 @@
         ];
       };
 
+      exec-on-workspace-change = [
+        "/bin/bash"
+        "-c"
+        "/run/current-system/sw/bin/sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE"
+      ];
+
       mode.service.binding = {
         esc = ["reload-config" "mode main"];
         r = ["flatten-workspace-tree" "mode main"];

@@ -32,16 +32,25 @@ A declarative macOS system configuration using nix-darwin, home-manager, and hom
 │   ├── homebrew.nix        # Homebrew packages and casks
 │   ├── packages.nix        # System packages configuration
 │   └── system.nix          # System preferences and defaults
+│   └── user-and-host.nix   # User and host specific variables
 ├── apps/
 │   ├── default.nix         # Import all app configurations
 │   ├── aerospace/
 │   │   └── aerospace.flake # Aerospace window manager configuration
 │   ├── git/
-│   │   └── git.flake       # Git configuration 
+│   │   └── git.flake       # Git configuration
+│   ├── jankyborders/
+│   │   └── jankyborders.flake # Jankyborders configuration
+│   ├── neovim/             # Neovim configuration
+│   │   └── ...
+│   ├── sketchybar/         # Sketchybar configuration
+│   │   └── ...
 │   └── zsh/
 │       └── zsh.flake       # ZSH shell configuration
 ├── scripts/
-│   └── fetch-email.sh      # Script for 1Password email fetching
+│   ├── fetch-email.sh      # Script for 1Password email fetching
+│   ├── display-mode.sh     # Script for managing display modes
+│   └── manage-mas.sh       # Script for managing Mac App Store apps
 └── README.md               # This file
 ```
 
@@ -54,7 +63,9 @@ A declarative macOS system configuration using nix-darwin, home-manager, and hom
 - **1Password Integration**: Securely retrieve secrets from 1Password
 - **Modular Structure**: Easily maintain and extend configurations
 - **External Scripts**: Separation of logic from configuration
-- **Window Management**: Tiling window management with Aerospace
+- **Window Management**: Tiling window management with Aerospace and Jankyborders
+- **Status Bar**: Customizable status bar with Sketchybar
+- **Neovim Configuration**: Pre-configured Neovim setup
 
 ## Setup Tutorial
 
@@ -170,15 +181,25 @@ Example for a new app configuration:
 
 ### Changing User Information
 
-User information is centralized in `flake.nix` (or config/host.nix if extracted):
+User information is centralized in `config/user-and-host.nix`:
 
 ```nix
-user = {
-  name = "Dani Klein";
-  username = "daniklein";
-  githubUsername = "dededecline";
-  homeDirectory = "/Users/daniklein";
-};
+# config/user-and-host.nix
+{
+  user = {
+    name = "Dani Klein";
+    username = "daniklein";
+    githubUsername = "dededecline";
+    homeDirectory = "/Users/daniklein";
+  };
+
+  host = {
+    name = "Dededevice";
+    computerName = "Dededevice";
+    hostName = "Dededevice.local";
+    localHostName = "Dededevice";
+  };
+}
 ```
 
 ## Customization
@@ -197,13 +218,16 @@ Git settings are configured in `apps/git/git.flake`.
 
 ### Window Management
 
-Aerospace window manager settings are configured in `apps/aerospace/aerospace.flake`. This includes:
+Aerospace window manager settings are configured in `apps/aerospace/aerospace.flake`.
+Jankyborders settings are configured in `apps/jankyborders/jankyborders.flake`.
 
-- Keyboard shortcuts for window manipulation
-- Gap and padding settings
-- Window layouts and workspace configuration
-- Application-specific rules
-- Integration with sketchybar and borders
+### Status Bar
+
+Sketchybar configuration is located in `apps/sketchybar/`.
+
+### Editor Configuration
+
+Neovim configuration is located in `apps/neovim/`.
 
 ## Troubleshooting
 
