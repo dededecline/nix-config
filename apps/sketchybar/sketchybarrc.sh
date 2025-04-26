@@ -91,10 +91,4 @@ sketchybar \
   update_freq=15 \
   script="clock_plugin 2>/tmp/sbar"
 
-sketchybar \
-  --add item clock_utc right \
-  --set clock_utc \
-  update_freq=15 \
-  script="clock_plugin true"
-
 sketchybar --update
