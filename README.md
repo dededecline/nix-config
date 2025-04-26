@@ -11,7 +11,6 @@
   - [Updating Your System](#updating-your-system)
   - [Adding New Packages](#adding-new-packages)
   - [Adding New Applications](#adding-new-applications)
-  - [Changing User Information](#changing-user-information)
 - [Customization](#customization)
   - [System Preferences](#system-preferences)
   - [Shell Configuration](#shell-configuration)
@@ -32,7 +31,6 @@ A declarative macOS system configuration using nix-darwin, home-manager, and hom
 │   ├── homebrew.nix        # Homebrew packages and casks
 │   ├── packages.nix        # System packages configuration
 │   └── system.nix          # System preferences and defaults
-│   └── user-and-host.nix   # User and host specific variables
 ├── apps/
 │   ├── default.nix         # Import all app configurations
 │   ├── aerospace/
@@ -175,29 +173,6 @@ Example for a new app configuration:
       enable = true;
       # Configuration options here
     };
-  };
-}
-```
-
-### Changing User Information
-
-User information is centralized in `config/user-and-host.nix`:
-
-```nix
-# config/user-and-host.nix
-{
-  user = {
-    name = "Dani Klein";
-    username = "daniklein";
-    githubUsername = "dededecline";
-    homeDirectory = "/Users/daniklein";
-  };
-
-  host = {
-    name = "Dededevice";
-    computerName = "Dededevice";
-    hostName = "Dededevice.local";
-    localHostName = "Dededevice";
   };
 }
 ```
