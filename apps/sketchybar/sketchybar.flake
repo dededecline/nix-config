@@ -7,7 +7,7 @@
 let
   aerospacePlugin = pkgs.writeShellApplication rec {
     name = "aerospace_plugin";
-    text = builtins.readFile ./aerospace_plugin.sh;
+    text = builtins.readFile ./plugins/aerospace.sh;
     derivationArgs.buildInputs = with pkgs; [
       aerospace
       sketchybar
@@ -18,13 +18,13 @@ let
 
   appNamePlugin = pkgs.writeShellApplication rec {
     name = "app_name_plugin";
-    text = builtins.readFile ./app_name_plugin.sh;
+    text = builtins.readFile ./plugins/app_name.sh;
     derivationArgs.buildInputs = [ pkgs.sketchybar ];
   };
 
   clockPlugin = pkgs.writeShellApplication rec {
     name = "clock_plugin";
-    text = builtins.readFile ./clock_plugin.sh;
+    text = builtins.readFile ./plugins/clock.sh;
     derivationArgs.buildInputs = with pkgs; [
       aerospace
       sketchybar
@@ -35,7 +35,7 @@ let
 
   batteryPlugin = pkgs.writeShellApplication rec {
     name = "battery_plugin";
-    text = builtins.readFile ./battery.sh;
+    text = builtins.readFile ./plugins/battery.sh;
     derivationArgs.buildInputs = with pkgs; [
       aerospace
       sketchybar
