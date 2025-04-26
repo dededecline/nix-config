@@ -6,8 +6,7 @@ bar=(
   position=top
   padding_left=16
   padding_right=16
-  #y_offset="${Y_OFFSET}"
-  color=0x401e1e2e  # Catppuccin Base (75% transparent)
+  color="0x40${THEME_BASE}"
   sticky=off
   blur_radius=2
   font_smoothing=on
@@ -15,14 +14,12 @@ bar=(
 
 default=(
   icon.font="notomono Nerd Font Propo:Thin:12.0"
-  icon.color=0xffcdd6f4  # Catppuccin Text
-  icon.highlight_color=0xff89b4fa  # Catppuccin Blue
+  icon.color="0xff${THEME_TEXT}"
+  icon.highlight_color="0xff${THEME_PINK}"
 
   label.font="NotoMono Nerd Font Propo:Thin:14.0"
-  label.color=0xffcdd6f4  # Catppuccin Text
-  label.highlight_color=0xff89b4fa  # Catppuccin Blue
-
-  #background.border_width=0
+  label.color="0xff${THEME_TEXT}"
+  label.highlight_color="0xff${THEME_PINK}"
 
   background.padding_left=4
   background.padding_right=4
@@ -47,12 +44,12 @@ for sid in $(aerospace list-workspaces --all); do
     sketchybar --add item "space.${sid}" left \
         --subscribe "space.${sid}" aerospace_workspace_change \
         --set "space.${sid}" \
-        background.color=0xff313244 \
-        background.border_color=0xff89b4fa \
+        background.color="0xff${THEME_SURFACE1}" \
+        background.border_color="0x44${THEME_PINK}" \
         background.corner_radius=5 \
         background.height=20 \
         background.drawing=on \
-        icon.color=0xffa6adc8 \
+        icon.color="0xff${THEME_TEXT}" \
         icon.font="sketchybar-app-font:Regular:8.0" \
         label="${sid}" \
         label.drawing=on \
@@ -74,21 +71,12 @@ sketchybar \
   padding_left=2 \
   padding_right=2
 
-
 sketchybar \
   --add item app_name left \
   --set app_name \
   icon=APP \
   script="app_name_plugin" \
   --subscribe app_name front_app_switched
-
-sketchybar \
-  --add item mode left \
-  --set mode \
-  background.color=0xfff38ba8 \
-  label.color=0xffcdd6f4 \
-  label.drawing=off \
-  drawing=off
 
 sketchybar \
   --add item battery right \

@@ -2,6 +2,7 @@
   config,
   pkgs,
   lib,
+  theme,
   ...
 }:
 let
@@ -68,7 +69,13 @@ in
   config = {
     services.sketchybar = {
       enable = true;
-      config = "sketchybarrc";
+      config = ''
+        export THEME_BASE="${theme.base}"
+        export THEME_TEXT="${theme.text}"
+        export THEME_PINK="${theme.pink}"
+        export THEME_SURFACE1="${theme.surface1}"
+        sketchybarrc
+      '';
       extraPackages = [
         aerospacePlugin
         appNamePlugin

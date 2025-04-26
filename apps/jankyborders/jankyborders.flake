@@ -1,9 +1,9 @@
-{ pkgs, ... }: {
+{ pkgs, theme, ... }: {
   services.jankyborders = {
     enable = true;
     order = "above";
     hidpi = true;
-    active_color = "0xAAB279A7";
-    inactive_color = "0x33867A74";
+    active_color = "0x99${theme.lavender}";
+    inactive_color = "0x33${theme.overlay0}";
   };
 }

@@ -65,6 +65,9 @@
         localHostName = "Dededevice";
       };
 
+      # Import palette
+      theme = builtins.fromJSON (builtins.readFile ./theming/palettes/catppuccin/frappe.json);
+
       configuration = { pkgs, config, ... }: {
         networking = {
           inherit (host) hostName;
@@ -124,7 +127,7 @@
           # Pass variables to other modules
           {
             _module.args = {
-              inherit user host self;
+              inherit user host self theme;
             };
           }
 
