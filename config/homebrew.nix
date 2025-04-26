@@ -37,6 +37,7 @@ _: {
       "cursor"
 
       # System Configuration
+      "desktoppr"
       "meetingbar"
       "proton-mail-bridge"
 

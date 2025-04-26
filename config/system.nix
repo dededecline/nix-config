@@ -31,8 +31,10 @@
   system = {
     stateVersion = 5;
 
-    activationScripts.postUserActivation.text = ''  
+    activationScripts.postUserActivation.text = ''
       defaultbrowser zen
+
+      /usr/local/bin/desktoppr ${self}/files/wallpapers/comfy-home.png
 
       # (Workaround) install mas manually
       ${self}/scripts/manage-mas.sh

@@ -7,18 +7,18 @@ bar=(
   padding_left=16
   padding_right=16
   #y_offset="${Y_OFFSET}"
-  color=0xff1e1e2e  # Catppuccin Base
+  color=0x401e1e2e  # Catppuccin Base (75% transparent)
   sticky=off
   blur_radius=2
   font_smoothing=on
 )
 
 default=(
-  icon.font="notomono Nerd Font Propo:Regular:12.0"
+  icon.font="notomono Nerd Font Propo:Thin:12.0"
   icon.color=0xffcdd6f4  # Catppuccin Text
   icon.highlight_color=0xff89b4fa  # Catppuccin Blue
 
-  label.font="NotoMono Nerd Font Propo:Regular:18.0"
+  label.font="NotoMono Nerd Font Propo:Thin:14.0"
   label.color=0xffcdd6f4  # Catppuccin Text
   label.highlight_color=0xff89b4fa  # Catppuccin Blue
 
@@ -89,7 +89,6 @@ sketchybar \
   label.color=0xffcdd6f4 \
   label.drawing=off \
   drawing=off
-
 
 sketchybar \
   --add item battery right \
