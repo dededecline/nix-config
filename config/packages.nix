@@ -74,6 +74,7 @@
     fd
     iftop
     jq
+    kitty
     lsd
     mkalias
     neofetch

@@ -1,0 +1,44 @@
+{
+  config,
+  user,
+  pkgs,
+  lib,
+  ...
+}: {
+  config = {
+    home-manager.users.${user.username} = {
+      programs.kitty = {
+        enable = true;
+        font = {
+          name = "JetBrainsMono Nerd Font";
+          size = 12.0;
+        };
+        settings = {
+          cursor_shape = "block";
+          cursor_blink_interval = 0;
+          scrollback_lines = 10000;
+          enable_audio_bell = false;
+          background_opacity = "0.9";
+          confirm_os_window_close = 0;
+        };
+        themeFile = "catppuccin-frappe";
+        extraConfig = ''
+          # Enable ligatures
+          font_features JetBrainsMonoNerdFontComplete-Regular +liga +calt
+          font_features JetBrainsMonoNerdFontComplete-Bold +liga +calt
+          font_features JetBrainsMonoNerdFontComplete-Italic +liga +calt
+          font_features JetBrainsMonoNerdFontComplete-BoldItalic +liga +calt
+        '';
+      };
+
+      home.file = {
+        ".config/kitty/themes/catppuccin-frappe.conf" = {
+          source = pkgs.fetchurl {
+            url = "https://raw.githubusercontent.com/catppuccin/kitty/main/themes/frappe.conf";
+            hash = "sha256-boYuT8Ptiy1598hptuKX88lKOIbixOAwCvGX6ln92iQ=";
+          };
+        };
+      };
+    };
+  };
+}

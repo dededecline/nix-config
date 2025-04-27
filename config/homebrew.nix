@@ -16,6 +16,9 @@ _: {
       "displayplacer"
     ];
     casks = [
+      # Communication
+      "betterdiscord-installer"
+      
       # Creativity
       "canva"
 
@@ -42,6 +45,7 @@ _: {
       "proton-mail-bridge"
 
       # Productivity
+      "ghostty"
       "notion"
       "proton-drive"
       "proton-mail"

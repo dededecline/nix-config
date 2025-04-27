@@ -9,7 +9,7 @@
         diff = "difft";
         du = "dust";
         find = "fd";
-        ls = "ls --color=auto";
+        ls = "lsd";
         ll = "ls -la";
         top = "btop";
         update = "darwin-rebuild switch --flake /etc/nix-darwin";
@@ -27,7 +27,7 @@
       
       initExtra = ''
         # Initialize oh-my-posh with a Nerd Font compatible theme
-        eval "$(oh-my-posh init zsh --config ${pkgs.oh-my-posh}/share/oh-my-posh/themes/agnoster.omp.json)"
+        eval "$(oh-my-posh init zsh --config ${pkgs.oh-my-posh}/share/oh-my-posh/themes/catppuccin_frappe.omp.json)"
       '';
     };
   };
