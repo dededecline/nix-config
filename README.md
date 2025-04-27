@@ -25,6 +25,7 @@ A declarative macOS system configuration using nix-darwin, home-manager, and hom
 ```
 /etc/nix-darwin/
 ├── flake.nix               # Main configuration entry point
+├── flake.lock             # Nix flake lock file
 ├── config/
 │   ├── default.nix         # Import all configurations
 │   ├── home.nix            # Home-manager configuration
@@ -33,22 +34,21 @@ A declarative macOS system configuration using nix-darwin, home-manager, and hom
 │   └── system.nix          # System preferences and defaults
 ├── apps/
 │   ├── default.nix         # Import all app configurations
-│   ├── aerospace/
-│   │   └── aerospace.flake # Aerospace window manager configuration
-│   ├── git/
-│   │   └── git.flake       # Git configuration
-│   ├── jankyborders/
-│   │   └── jankyborders.flake # Jankyborders configuration
+│   ├── aerospace/          # Aerospace window manager configuration
+│   ├── git/                # Git configuration
+│   ├── jankyborders/       # Jankyborders configuration
+│   ├── kitty/              # Kitty terminal configuration
 │   ├── neovim/             # Neovim configuration
-│   │   └── ...
 │   ├── sketchybar/         # Sketchybar configuration
-│   │   └── ...
-│   └── zsh/
-│       └── zsh.flake       # ZSH shell configuration
+│   └── zsh/                # ZSH shell configuration
 ├── scripts/
 │   ├── fetch-email.sh      # Script for 1Password email fetching
 │   ├── display-mode.sh     # Script for managing display modes
 │   └── manage-mas.sh       # Script for managing Mac App Store apps
+├── theming/                # Theme configurations
+│   ├── palettes/           # Color palette definitions
+│   └── wallpapers/         # Wallpaper collection
+├── LICENSE                 # License file
 └── README.md               # This file
 ```
 
@@ -64,6 +64,8 @@ A declarative macOS system configuration using nix-darwin, home-manager, and hom
 - **Window Management**: Tiling window management with Aerospace and Jankyborders
 - **Status Bar**: Customizable status bar with Sketchybar
 - **Neovim Configuration**: Pre-configured Neovim setup
+- **Terminal Configuration**: Kitty terminal with custom theming
+- **Theme Management**: Centralized theming system with color palettes and wallpapers
 
 ## Setup Tutorial
 
@@ -203,6 +205,13 @@ Sketchybar configuration is located in `apps/sketchybar/`.
 ### Editor Configuration
 
 Neovim configuration is located in `apps/neovim/`.
+
+### Theme Configuration
+
+Theming configuration is centralized in the `theming/` directory:
+- Color palettes are defined in `theming/palettes/`
+- Wallpapers are stored in `theming/wallpapers/`
+- Themes can be applied across various applications including Kitty, Neovim, and Sketchybar
 
 ## Troubleshooting
 
