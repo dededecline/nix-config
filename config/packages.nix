@@ -78,6 +78,7 @@
     lsd
     mkalias
     neofetch
+    neovim
     oh-my-posh
     syncthing
     tree
