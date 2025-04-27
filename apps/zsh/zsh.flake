@@ -11,6 +11,7 @@
         find = "fd";
         ls = "lsd";
         ll = "ls -la";
+        fetch = "fastfetch"
         top = "btop";
         update = "darwin-rebuild switch --flake /etc/nix-darwin";
       };
