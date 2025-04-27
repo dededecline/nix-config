@@ -71,13 +71,13 @@
     coreutils
     defaultbrowser
     du-dust
+    fastfetch
     fd
     iftop
     jq
     kitty
     lsd
     mkalias
-    neofetch
     neovim
     oh-my-posh
     syncthing
