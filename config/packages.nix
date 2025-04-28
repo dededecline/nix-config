@@ -73,6 +73,7 @@
     du-dust
     fastfetch
     fd
+    fzf
     iftop
     jq
     kitty
@@ -81,6 +82,7 @@
     neovim
     oh-my-posh
     syncthing
+    tmux
     tree
     unrar
     unzip

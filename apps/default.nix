@@ -5,6 +5,7 @@
     ./git/git.nix
     ./jankyborders/jankyborders.nix
     ./misc/bat.nix
+    ./misc/lsd.nix
     ./sketchybar/sketchybar.nix
     ./zsh/zsh.nix
   ];
