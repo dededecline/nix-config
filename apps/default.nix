@@ -4,9 +4,8 @@
     ./kitty/kitty.nix
     ./git/git.nix
     ./jankyborders/jankyborders.nix
-    ./misc/bat.nix
-    ./misc/lsd.nix
     ./sketchybar/sketchybar.nix
-    ./zsh/zsh.nix
-  ];
+  ] ++ (builtins.map (name: ./terminal + "/${name}")
+    (builtins.filter (name: builtins.match ".*\\.nix" name != null)
+      (builtins.attrNames (builtins.readDir ./terminal))));
 }
