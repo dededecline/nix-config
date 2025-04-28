@@ -26,8 +26,12 @@
         export HISTIGNORE="pwd:ls:cd"
       '';
 
+      completionInit = ''
+        # Case insensitive matching for completion with smart case behavior
+        zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
+      '';
+
       initExtra = ''
-        # Initialize oh-my-posh with a Nerd Font compatible theme
         eval "$(oh-my-posh init zsh --config ${pkgs.oh-my-posh}/share/oh-my-posh/themes/catppuccin_frappe.omp.json)"
         export FZF_DEFAULT_OPTS=" \
           --color=bg+:#414559,bg:#303446,spinner:#f2d5cf,hl:#e78284 \
