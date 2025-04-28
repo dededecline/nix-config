@@ -25,7 +25,7 @@ A declarative macOS system configuration using nix-darwin, home-manager, and hom
 ```
 /etc/nix-darwin/
 ├── flake.nix               # Main configuration entry point
-├── flake.lock             # Nix flake lock file
+├── flake.lock              # Nix flake lock file
 ├── config/
 │   ├── default.nix         # Import all configurations
 │   ├── home.nix            # Home-manager configuration
@@ -40,7 +40,11 @@ A declarative macOS system configuration using nix-darwin, home-manager, and hom
 │   ├── kitty/              # Kitty terminal configuration
 │   ├── neovim/             # Neovim configuration
 │   ├── sketchybar/         # Sketchybar configuration
-│   └── zsh/                # ZSH shell configuration
+│   └── terminal/           # Terminal configurations
+│       ├── bat.nix         # Bat syntax highlighter configuration
+│       ├── lsd.nix         # Modern ls replacement configuration
+│       ├── tmux.nix        # Tmux terminal multiplexer configuration
+│       └── zsh.nix         # ZSH shell configuration
 ├── scripts/
 │   ├── fetch-email.sh      # Script for 1Password email fetching
 │   ├── display-mode.sh     # Script for managing display modes
@@ -64,7 +68,7 @@ A declarative macOS system configuration using nix-darwin, home-manager, and hom
 - **Window Management**: Tiling window management with Aerospace and Jankyborders
 - **Status Bar**: Customizable status bar with Sketchybar
 - **Neovim Configuration**: Pre-configured Neovim setup
-- **Terminal Configuration**: Kitty terminal with custom theming
+- **Terminal Configuration**: Kitty terminal with custom theming, plus utilities like tmux, bat, and lsd
 - **Theme Management**: Centralized theming system with color palettes and wallpapers
 
 ## Setup Tutorial
@@ -162,13 +166,13 @@ update
 To add a new application configuration:
 
 1. Create a new directory in `apps/` for your application
-2. Create a configuration file (e.g., `myapp.flake`)
+2. Create a configuration file (e.g., `myapp.nix`)
 3. Add it to the imports in `apps/default.nix`
 
-Example for a new app configuration:
+Example for a new `Home Manager` app configuration:
 
 ```nix
-# apps/newapp/newapp.flake
+# apps/newapp/newapp.nix
 { pkgs, user, ... }: {
   home-manager.users.${user.username} = { ... }: {
     programs.newapp = {
@@ -179,6 +183,19 @@ Example for a new app configuration:
 }
 ```
 
+Example for a new `nix-darwin` app configuration:
+
+```nix
+# apps/newapp/newapp.nix
+{ pkgs, ... }: {
+  services.newapp = {
+    enable = true;
+    # Configuration options here
+  };
+}
+
+```
+
 ## Customization
 
 ### System Preferences
@@ -187,16 +204,19 @@ System preferences are configured in `config/system.nix`.
 
 ### Shell Configuration
 
-Shell aliases and configuration are defined in `apps/zsh/zsh.flake`.
+Shell aliases and configuration are defined in `apps/terminal/zsh.nix`. Additional terminal tools include:
+- `tmux` - terminal multiplexer, configured in `apps/terminal/tmux.nix`
+- `bat` - syntax highlighting for cat, configured in `apps/terminal/bat.nix`
+- `lsd` - modern ls replacement, configured in `apps/terminal/lsd.nix`
 
 ### Git Configuration
 
-Git settings are configured in `apps/git/git.flake`.
+Git settings are configured in `apps/git/git.nix`.
 
 ### Window Management
 
-Aerospace window manager settings are configured in `apps/aerospace/aerospace.flake`.
-Jankyborders settings are configured in `apps/jankyborders/jankyborders.flake`.
+Aerospace window manager settings are configured in `apps/aerospace/aerospace.nix`.
+Jankyborders settings are configured in `apps/jankyborders/jankyborders.nix`.
 
 ### Status Bar
 
@@ -204,7 +224,7 @@ Sketchybar configuration is located in `apps/sketchybar/`.
 
 ### Editor Configuration
 
-Neovim configuration is located in `apps/neovim/`.
+Neovim configuration is located in `apps/neovim/neovim.nix`.
 
 ### Theme Configuration
 

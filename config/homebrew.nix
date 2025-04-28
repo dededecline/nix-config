@@ -36,16 +36,12 @@ _: {
       "1password"
       "protonvpn"
 
-      # Software Development
-      "cursor"
-
       # System Configuration
       "desktoppr"
       "meetingbar"
       "proton-mail-bridge"
 
       # Productivity
-      "ghostty"
       "notion"
       "proton-drive"
       "proton-mail"
