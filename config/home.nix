@@ -1,4 +1,4 @@
-{ user, inputs, ... }: {
+{ user, ... }: {
   home-manager = {
     useGlobalPkgs = true;
     useUserPackages = true;

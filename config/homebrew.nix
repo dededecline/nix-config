@@ -18,7 +18,7 @@ _: {
     casks = [
       # Communication
       "betterdiscord-installer"
-      
+
       # Creativity
       "canva"
 

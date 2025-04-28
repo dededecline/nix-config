@@ -1,11 +1,11 @@
 { ... }: {
   imports = [
-    ./aerospace/aerospace.flake
-    ./kitty/kitty.flake
-    ./git/git.flake
-    ./jankyborders/jankyborders.flake
-    ./misc/bat.flake
-    ./sketchybar/sketchybar.flake
-    ./zsh/zsh.flake
+    ./aerospace/aerospace.nix
+    ./kitty/kitty.nix
+    ./git/git.nix
+    ./jankyborders/jankyborders.nix
+    ./misc/bat.nix
+    ./sketchybar/sketchybar.nix
+    ./zsh/zsh.nix
   ];
 }

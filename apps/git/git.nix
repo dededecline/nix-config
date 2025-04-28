@@ -1,5 +1,5 @@
-{ pkgs, user, ... }: {
-  home-manager.users.${user.username} = { ... }: {
+{ user, ... }: {
+  home-manager.users.${user.username} = _: {
     programs.git = {
       enable = true;
       userName = user.githubUsername;

@@ -1,5 +1,5 @@
 { pkgs, user, ... }: {
-  home-manager.users.${user.username} = { ... }: {
+  home-manager.users.${user.username} = _: {
     programs.zsh = {
       enable = true;
       autosuggestion.enable = true;
@@ -25,7 +25,7 @@
       initExtraFirst = ''
         export HISTIGNORE="pwd:ls:cd"
       '';
-      
+
       initExtra = ''
         # Initialize oh-my-posh with a Nerd Font compatible theme
         eval "$(oh-my-posh init zsh --config ${pkgs.oh-my-posh}/share/oh-my-posh/themes/catppuccin_frappe.omp.json)"

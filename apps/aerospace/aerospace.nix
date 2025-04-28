@@ -1,7 +1,6 @@
-{ pkgs, ... }: 
+{ pkgs, ... }:
 let
   sb = "${pkgs.sketchybar}/bin/sketchybar";
-  modeBadge = icon: drawing: "exec-and-forget ${sb} --set mode icon=${icon} drawing=${drawing}";
   trigger-workspace-change = "${sb} --trigger aerospace_workspace_change";
 in
 {
@@ -86,10 +85,10 @@ in
       automatically-unhide-macos-hidden-apps = true;
 
       mode.service.binding = {
-        esc = ["reload-config" "mode main"];
-        r = ["flatten-workspace-tree" "mode main"];
-        f = ["layout floating tiling" "mode main"];
-        backspace = ["close-all-windows-but-current" "mode main"];
+        esc = [ "reload-config" "mode main" ];
+        r = [ "flatten-workspace-tree" "mode main" ];
+        f = [ "layout floating tiling" "mode main" ];
+        backspace = [ "close-all-windows-but-current" "mode main" ];
       };
 
       on-window-detected = [
@@ -175,7 +174,7 @@ in
         }
       ];
 
-      on-focused-monitor-changed = ["move-mouse monitor-lazy-center"];
+      on-focused-monitor-changed = [ "move-mouse monitor-lazy-center" ];
 
       enable-normalization-flatten-containers = true;
       enable-normalization-opposite-orientation-for-nested-containers = true;

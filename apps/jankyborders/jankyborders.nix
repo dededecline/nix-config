@@ -1,4 +1,4 @@
-{ pkgs, theme, ... }: {
+{ theme, ... }: {
   services.jankyborders = {
     enable = true;
     hidpi = true;

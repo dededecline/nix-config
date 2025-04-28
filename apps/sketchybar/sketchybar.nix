@@ -1,9 +1,7 @@
-{
-  config,
-  pkgs,
-  lib,
-  theme,
-  ...
+{ config
+, pkgs
+, theme
+, ...
 }:
 let
   aerospacePlugin = pkgs.writeShellApplication rec {
