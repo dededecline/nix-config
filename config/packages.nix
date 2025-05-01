@@ -29,10 +29,7 @@
     nodePackages.npm
     nodePackages.prettier
     nodejs
-
-    # Productivity
-    cryptpad
-
+   
     # Python Development
     black
     python3
