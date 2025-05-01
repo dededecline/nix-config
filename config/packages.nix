@@ -30,6 +30,9 @@
     nodePackages.prettier
     nodejs
 
+    # Productivity
+    cryptpad
+
     # Python Development
     black
     python3
@@ -64,6 +67,7 @@
     tableplus
     tflint
     utm
+    vscode
 
     # System Management
     bat
