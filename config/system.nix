@@ -123,7 +123,7 @@
         type = "png";
       };
       trackpad = {
-        Clicking = true;
+        Clicking = false;
         TrackpadThreeFingerDrag = false;
       };
     };
