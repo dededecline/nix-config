@@ -20,9 +20,12 @@
             export OP_BIN="${op}"
             export USER_NAME="${user.name}"
             export GITHUB_USERNAME="${user.githubUsername}"
-          
+
+            bash 
+
             # Execute the scripts
             bash ${emailScriptPath}
+            zsh
           '';
       };
 

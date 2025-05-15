@@ -29,7 +29,7 @@
     nodePackages.npm
     nodePackages.prettier
     nodejs
-   
+
     # Python Development
     black
     python3
@@ -67,6 +67,7 @@
     vscode
 
     # System Management
+    appcleaner
     bat
     btop
     coreutils

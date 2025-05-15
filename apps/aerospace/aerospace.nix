@@ -172,6 +172,11 @@ in
           "if".app-id = "ai.perplexity.mac";
           run = [ "move-node-to-workspace 4" ];
         }
+        {
+          # Balatro
+          "if".app-id = "com.Balatro.localthunk";
+          run = [ "move-node-to-workspace 6" ];
+        }
       ];
 
       on-focused-monitor-changed = [ "move-mouse monitor-lazy-center" ];
