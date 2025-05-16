@@ -10,7 +10,7 @@ _: {
       "homebrew/core"
       "homebrew/cask"
       "homebrew/bundle"
-      "homebrew/services"
+      "mediosz/tap"
     ];
     brews = [
       "displayplacer"
@@ -40,6 +40,7 @@ _: {
       "desktoppr"
       "meetingbar"
       "proton-mail-bridge"
+      "swipeaerospace"
 
       # Productivity
       "notion"

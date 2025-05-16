@@ -1,5 +1,21 @@
 {
   "nodes": {
+    "aerospace-swipe": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1747108014,
+        "narHash": "sha256-jyxvcG/l8nk9o7mPbv2kvWoNyE/pLRQegfCAaQVQv6c=",
+        "owner": "MediosZ",
+        "repo": "homebrew-tap",
+        "rev": "1b9277dd2df657669123273e62d4fd61d8a15dfa",
+        "type": "github"
+      },
+      "original": {
+        "owner": "MediosZ",
+        "repo": "homebrew-tap",
+        "type": "github"
+      }
+    },
     "brew-src": {
       "flake": false,
       "locked": {
@@ -404,6 +420,7 @@
     },
     "root": {
       "inputs": {
+        "aerospace-swipe": "aerospace-swipe",
         "home-manager": "home-manager",
         "homebrew-bundle": "homebrew-bundle",
         "homebrew-cask": "homebrew-cask",

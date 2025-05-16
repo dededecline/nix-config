@@ -76,6 +76,10 @@ in
         ];
       };
 
+      after-startup-command = [
+        "exec-and-forget open -n /Applications/SwipeAeroSpace.app"
+      ];
+
       exec-on-workspace-change = [
         "/bin/bash"
         "-c"

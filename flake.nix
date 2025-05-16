@@ -31,6 +31,10 @@
       url = "github:homebrew/homebrew-bundle";
       flake = false;
     };
+    aerospace-swipe = {
+      url = "github:MediosZ/homebrew-tap";
+      flake = false;
+    };
     lix-module = {
       url = "https://git.lix.systems/lix-project/nixos-module/archive/2.92.0-1.tar.gz";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -47,6 +51,7 @@
     , homebrew-cask
     , homebrew-bundle
     , homebrew-core
+    , aerospace-swipe
     , mac-app-util
     , nix-formatter-pack
     }:
@@ -151,6 +156,7 @@
                 "homebrew/homebrew-core" = homebrew-core;
                 "homebrew/homebrew-cask" = homebrew-cask;
                 "homebrew/homebrew-bundle" = homebrew-bundle;
+                "MediosZ/homebrew-tap" = aerospace-swipe;
               };
 
               mutableTaps = false;
