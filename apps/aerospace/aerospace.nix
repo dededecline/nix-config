@@ -77,7 +77,7 @@ in
       };
 
       after-startup-command = [
-        "exec-and-forget open -n /Applications/SwipeAeroSpace.app"
+        "exec-and-forget /bin/bash -c 'pgrep -x SwipeAeroSpace > /dev/null || open -n /Applications/SwipeAeroSpace.app'"
       ];
 
       exec-on-workspace-change = [
@@ -134,6 +134,11 @@ in
         {
           # Steam
           "if".app-id = "com.valvesoftware.steam";
+          run = [ "layout floating" ];
+        }
+        {
+          # Activity Monitor
+          "if".app-id = "com.apple.ActivityMonitor";
           run = [ "layout floating" ];
         }
         {
