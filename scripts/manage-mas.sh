@@ -4,6 +4,7 @@ set -e
 # Mac App Store apps to install and manage
 declare -A MAS_APPS=(
   ['Home Assistant']=1099568401
+  ['iMovie']=408981434
   ['Okta Verify']=490179405
   ['Parcel']=639968404
   ['Perplexity']=6714467650
