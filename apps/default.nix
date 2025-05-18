@@ -1,4 +1,7 @@
-{ ... }: {
+{ pkgs, ... }: 
+let
+  helpers = import ../lib/helpers.nix { inherit pkgs; };
+  in {
   imports = [
     ./aerospace/aerospace.nix
     ./kitty/kitty.nix

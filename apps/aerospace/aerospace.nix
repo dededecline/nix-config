@@ -2,6 +2,7 @@
 let
   sb = "${pkgs.sketchybar}/bin/sketchybar";
   trigger-workspace-change = "${sb} --trigger aerospace_workspace_change";
+  trigger-workspace-monitor-change = "${sb} --trigger aerospace_workspace_monitor_change";
 in
 {
   services.aerospace = {
@@ -56,7 +57,10 @@ in
         alt-shift-y = "move-node-to-workspace 6 --focus-follows-window";
 
         alt-tab = "workspace-back-and-forth";
-        alt-shift-tab = "move-workspace-to-monitor --wrap-around next";
+        alt-shift-tab = [
+          "move-workspace-to-monitor --wrap-around next"
+          "exec-and-forget ${trigger-workspace-monitor-change}"
+        ];
 
         alt-shift-semicolon = "mode service";
       };

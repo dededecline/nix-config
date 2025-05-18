@@ -15,6 +15,7 @@
     meslo-lgs-nf
     noto-fonts
     noto-fonts-emoji
+    sketchybar-app-font
 
     # Media Tools
     ffmpeg

@@ -35,6 +35,10 @@
       url = "github:MediosZ/homebrew-tap";
       flake = false;
     };
+    sf-mono-liga-src = {
+      url = "github:shaunsingh/SFMono-Nerd-Font-Ligaturized";
+      flake = false;
+    };
     lix-module = {
       url = "https://git.lix.systems/lix-project/nixos-module/archive/2.92.0-1.tar.gz";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -54,6 +58,7 @@
     , aerospace-swipe
     , mac-app-util
     , nix-formatter-pack
+    , sf-mono-liga-src
     }:
     let
       user = {
@@ -134,6 +139,27 @@
             _module.args = {
               inherit user host self theme;
             };
+          }
+
+          {
+            nixpkgs.overlays = [
+              (_self: super: {
+                #nixfmt-latest = nixfmt.packages."x86_64-darwin".nixfmt;
+                nodejs = super.nodejs_22;
+              })
+              (_final: prev: {
+                sf-mono-liga-bin = prev.stdenvNoCC.mkDerivation {
+                  pname = "sf-mono-liga-bin";
+                  version = "dev";
+                  src = sf-mono-liga-src;
+                  dontConfigure = true;
+                  installPhase = ''
+                    mkdir -p $out/share/fonts/opentype
+                    cp -R $src/*.otf $out/share/fonts/opentype/
+                  '';
+                };
+              })
+            ];
           }
 
           ./config/default.nix
