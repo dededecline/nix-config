@@ -336,3 +336,4 @@ update_outdated_mas_apps "$mas_path" MAS_APPS
 uninstall_unmanaged_mas_apps "$mas_path" MAS_APPS
 
 echo "MAS application management complete."
+zsh
