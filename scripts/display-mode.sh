@@ -11,11 +11,19 @@
 # Path to displayplacer binary
 DISPLAYPLACER="/opt/homebrew/bin/displayplacer"
 
-# Define display origins - position index corresponds to display order
-DISPLAY_ORIGINS=("(0,0)" "(-3360,-173)")
-
 # Get displayplacer output once to avoid multiple calls
 DISPLAY_INFO=$($DISPLAYPLACER list)
+
+# Dynamically build DISPLAY_ORIGINS based on detected displays
+DISPLAY_ORIGINS=("(0,0)")
+if echo "$DISPLAY_INFO" | grep -q "37D8832A-2D66-02CA-B9F7-8F30A301B230"; then
+  DISPLAY_ORIGINS+=("(-3360,-173)")
+fi
+if echo "$DISPLAY_INFO" | grep -q "CC386128-ECE5-46D3-8BC9-6091B600461F"; then
+  DISPLAY_ORIGINS+=("(-251,-1600)")
+fi
+
+echo "Using display origins: ${DISPLAY_ORIGINS[*]}"
 
 # Get all display IDs
 DISPLAY_IDS=$(echo "$DISPLAY_INFO" | grep "Persistent screen id:" | awk '{print $4}')

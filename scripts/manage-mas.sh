@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-set -e
 
 # Mac App Store apps to install and manage
 declare -A MAS_APPS=(
