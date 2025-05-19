@@ -3,7 +3,6 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-24.11-darwin";
-    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     mac-app-util.url = "github:hraban/mac-app-util";
     nix-homebrew.url = "github:zhaofengli-wip/nix-homebrew";
 
@@ -51,7 +50,6 @@
     , lix-module
     , nix-darwin
     , nixpkgs
-    , nixpkgs-unstable
     , home-manager
     , nix-homebrew
     , homebrew-cask
@@ -160,13 +158,7 @@
                     cp -R $src/*.otf $out/share/fonts/opentype/
                   '';
                 };
-              })
-              (final: _prev: {
-                unstable = import nixpkgs-unstable {
-                  inherit (final) system;
-                  config.allowUnfree = true;
-                };
-              })
+              });
             ];
           }
 
