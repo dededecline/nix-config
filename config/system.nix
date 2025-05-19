@@ -5,6 +5,8 @@
     hack-font
     noto-fonts
     noto-fonts-emoji
+    sf-mono-liga-bin
+    sketchybar-app-font
   ];
 
   networking = {

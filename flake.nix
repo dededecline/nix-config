@@ -3,6 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-24.11-darwin";
+    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     mac-app-util.url = "github:hraban/mac-app-util";
     nix-homebrew.url = "github:zhaofengli-wip/nix-homebrew";
 
@@ -35,6 +36,10 @@
       url = "github:MediosZ/homebrew-tap";
       flake = false;
     };
+    sf-mono-liga-src = {
+      url = "github:shaunsingh/SFMono-Nerd-Font-Ligaturized";
+      flake = false;
+    };
     lix-module = {
       url = "https://git.lix.systems/lix-project/nixos-module/archive/2.92.0-1.tar.gz";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -46,6 +51,7 @@
     , lix-module
     , nix-darwin
     , nixpkgs
+    , nixpkgs-unstable
     , home-manager
     , nix-homebrew
     , homebrew-cask
@@ -54,6 +60,7 @@
     , aerospace-swipe
     , mac-app-util
     , nix-formatter-pack
+    , sf-mono-liga-src
     }:
     let
       user = {
@@ -134,6 +141,33 @@
             _module.args = {
               inherit user host self theme;
             };
+          }
+
+          {
+            nixpkgs.overlays = [
+              (_self: super: {
+                #nixfmt-latest = nixfmt.packages."x86_64-darwin".nixfmt;
+                nodejs = super.nodejs_22;
+              })
+              (_final: prev: {
+                sf-mono-liga-bin = prev.stdenvNoCC.mkDerivation {
+                  pname = "sf-mono-liga-bin";
+                  version = "dev";
+                  src = sf-mono-liga-src;
+                  dontConfigure = true;
+                  installPhase = ''
+                    mkdir -p $out/share/fonts/opentype
+                    cp -R $src/*.otf $out/share/fonts/opentype/
+                  '';
+                };
+              })
+              (final: _prev: {
+                unstable = import nixpkgs-unstable {
+                  inherit (final) system;
+                  config.allowUnfree = true;
+                };
+              })
+            ];
           }
 
           ./config/default.nix
