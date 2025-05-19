@@ -1,6 +1,7 @@
 { pkgs, ... }: 
 let
   helpers = import ../lib/helpers.nix { inherit pkgs; };
+  terminal_apps = helpers.filter_ls ./terminal "nix";
   in {
   imports = [
     ./aerospace/aerospace.nix
@@ -9,7 +10,5 @@ let
     ./jankyborders/jankyborders.nix
     ./neovim/neovim.nix
     ./sketchybar/sketchybar.nix
-  ] ++ (builtins.map (name: ./terminal + "/${name}")
-    (builtins.filter (name: builtins.match ".*\\.nix" name != null)
-      (builtins.attrNames (builtins.readDir ./terminal))));
+  ] ++ terminal_apps;
 }

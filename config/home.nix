@@ -2,6 +2,7 @@
   home-manager = {
     useGlobalPkgs = true;
     useUserPackages = true;
+    backupFileExtension = "backup";
 
     users.${user.username} = { pkgs, lib, ... }: {
       home.username = user.username;
