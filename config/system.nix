@@ -28,25 +28,33 @@
     };
   };
 
-  security.pam.enableSudoTouchIdAuth = true;
+  security.pam.services.sudo_local.touchIdAuth = true;
 
   system = {
     stateVersion = 5;
 
-    activationScripts.postUserActivation.text = ''
-      defaultbrowser zen
+    primaryUser = "dani";
 
-      /usr/local/bin/desktoppr ${self}/theming/wallpapers/comfy-home.png
+    activationScripts = {
+      pua = {
+        text = ''
+          defaultbrowser zen
 
-      # (Workaround) install mas manually
-      ${self}/scripts/manage-mas.sh
-      
-      # Run display mode optimization script
-      ${self}/scripts/display-mode.sh
-      
-      # Following line should allow us to avoid a logout/login cycle when changing settings
-      /System/Library/PrivateFrameworks/SystemAdministration.framework/Resources/activateSettings -u
-    '';
+          /usr/local/bin/desktoppr ${self}/theming/wallpapers/comfy-home.png
+
+          # (Workaround) install mas manually
+          ${self}/scripts/manage-mas.sh
+          
+          displayplacer \
+            "id:37D8832A-2D66-02CA-B9F7-8F30A301B230 res:2056x1329 hz:120 color_depth:8 enabled:true scaling:on origin:(0,0) degree:0" \
+            "id:B42D6CB3-57EB-488B-88C2-8F68E0376445 res:2560x1600 hz:120 color_depth:8 enabled:true scaling:on origin:(-251,-1600) degree:0" \
+            "id:682D7D78-8DD2-468B-A3E4-7F0478C075B5 res:3008x1692 hz:120 color_depth:8 enabled:true scaling:on origin:(-3008,-173) degree:0"
+          
+          # Following line should allow us to avoid a logout/login cycle when changing settings
+          /System/Library/PrivateFrameworks/SystemAdministration.framework/Resources/activateSettings -u
+        '';
+      };
+    };
 
     # Set Git commit hash for darwin-version.
     configurationRevision = self.rev or self.dirtyRev or null;

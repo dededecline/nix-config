@@ -2,7 +2,7 @@
   description = "Dededevice Nix config";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-24.11-darwin";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-25.05-darwin";
     mac-app-util.url = "github:hraban/mac-app-util";
     nix-homebrew.url = "github:zhaofengli-wip/nix-homebrew";
 
@@ -12,11 +12,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nix-darwin = {
-      url = "github:LnL7/nix-darwin/nix-darwin-24.11";
+      url = "github:LnL7/nix-darwin/nix-darwin-25.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     home-manager = {
-      url = "github:nix-community/home-manager/release-24.11";
+      url = "github:nix-community/home-manager/release-25.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     homebrew-core = {
@@ -63,9 +63,9 @@
     let
       user = {
         name = "Dani Klein";
-        username = "daniklein";
+        username = "dani";
         githubUsername = "dededecline";
-        homeDirectory = "/Users/daniklein";
+        homeDirectory = "/Users/danik";
       };
 
       host = {
@@ -158,7 +158,7 @@
                     cp -R $src/*.otf $out/share/fonts/opentype/
                   '';
                 };
-              });
+              })
             ];
           }
 
