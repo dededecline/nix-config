@@ -1,11 +1,14 @@
 {
-  description = "Dededevice Nix config";
+  description = "Dede's Nix Config";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-25.05-darwin";
-    mac-app-util.url = "github:hraban/mac-app-util";
     nix-homebrew.url = "github:zhaofengli-wip/nix-homebrew";
 
+    mac-app-util = {
+      url = "github:hraban/mac-app-util";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     nix-formatter-pack = {
       # use by running `nix fmt`
       url = "github:Gerschtli/nix-formatter-pack";
@@ -17,6 +20,10 @@
     };
     home-manager = {
       url = "github:nix-community/home-manager/release-25.05";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    lix-module = {
+      url = "https://git.lix.systems/lix-project/nixos-module/archive/2.93.0.tar.gz";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     homebrew-core = {
@@ -31,165 +38,45 @@
       url = "github:homebrew/homebrew-bundle";
       flake = false;
     };
-    aerospace-swipe = {
-      url = "github:MediosZ/homebrew-tap";
-      flake = false;
-    };
-    sf-mono-liga-src = {
-      url = "github:shaunsingh/SFMono-Nerd-Font-Ligaturized";
-      flake = false;
-    };
-    lix-module = {
-      url = "https://git.lix.systems/lix-project/nixos-module/archive/2.92.0-1.tar.gz";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
-  outputs =
-    { self
-    , lix-module
-    , nix-darwin
-    , nixpkgs
-    , home-manager
-    , nix-homebrew
-    , homebrew-cask
-    , homebrew-bundle
-    , homebrew-core
-    , aerospace-swipe
-    , mac-app-util
-    , nix-formatter-pack
-    , sf-mono-liga-src
-    }:
-    let
-      user = {
+  outputs = {
+    self,
+    nixpkgs,
+    nix-formatter-pack,
+    ...
+  } @ inputs: let
+    inherit (self) outputs;
+
+    users = {
+      dani = {
         name = "Dani Klein";
         username = "dani";
         githubUsername = "dededecline";
-        homeDirectory = "/Users/danik";
-      };
-
-      host = {
-        name = "Dededevice";
-        computerName = "Dededevice";
-        hostName = "Dededevice.local";
-        localHostName = "Dededevice";
-      };
-
-      # Import palette
-      theme = builtins.fromJSON (builtins.readFile ./theming/palettes/catppuccin/frappe.json);
-
-      configuration = { pkgs, config, ... }: {
-        networking = {
-          inherit (host) hostName;
-          inherit (host) localHostName;
-          inherit (host) computerName;
-        };
-
-        users.users.${user.username} = {
-          home = user.homeDirectory;
-          shell = pkgs.zsh;
-        };
-
-        nix = {
-          gc = {
-            automatic = true;
-            interval = { Hour = 5; Minute = 0; };
-            options = "--delete-older-than 7d";
-          };
-          optimise = {
-            automatic = true;
-            interval = { Hour = 6; Minute = 0; };
-          };
-          settings = {
-            experimental-features = ''
-              flakes nix-command no-url-literals
-            '';
-          };
-        };
-
-        nixpkgs = {
-          hostPlatform = "aarch64-darwin";
-          config = {
-            allowUnfree = true;
-            allowBroken = false;
-            allowInsecure = false;
-            allowUnsupportedSystem = false;
-          };
-        };
-      };
-      forEachSystem = nixpkgs.lib.genAttrs [ "aarch64-darwin" ];
-    in
-    {
-      formatter = forEachSystem (system:
-        nix-formatter-pack.lib.mkFormatter {
-          pkgs = nixpkgs.legacyPackages.${system};
-
-          config.tools = {
-            deadnix.enable = true;
-            nixpkgs-fmt.enable = true;
-            statix.enable = true;
-          };
-        });
-      darwinConfigurations.${host.name} = nix-darwin.lib.darwinSystem {
-        modules = [
-          configuration
-
-          # Pass variables to other modules
-          {
-            _module.args = {
-              inherit user host self theme;
-            };
-          }
-
-          {
-            nixpkgs.overlays = [
-              (_self: super: {
-                #nixfmt-latest = nixfmt.packages."x86_64-darwin".nixfmt;
-                nodejs = super.nodejs_22;
-              })
-              (_final: prev: {
-                sf-mono-liga-bin = prev.stdenvNoCC.mkDerivation {
-                  pname = "sf-mono-liga-bin";
-                  version = "dev";
-                  src = sf-mono-liga-src;
-                  dontConfigure = true;
-                  installPhase = ''
-                    mkdir -p $out/share/fonts/opentype
-                    cp -R $src/*.otf $out/share/fonts/opentype/
-                  '';
-                };
-              })
-            ];
-          }
-
-          ./config/default.nix
-
-          home-manager.darwinModules.home-manager
-          lix-module.nixosModules.default
-          nix-homebrew.darwinModules.nix-homebrew
-          mac-app-util.darwinModules.default
-
-          {
-            nix-homebrew = {
-              enable = true;
-
-              # Apple Silicon Only: Also install Homebrew under the default Intel prefix for Rosetta 2
-              enableRosetta = false;
-
-              user = user.username;
-
-              taps = {
-                "homebrew/homebrew-core" = homebrew-core;
-                "homebrew/homebrew-cask" = homebrew-cask;
-                "homebrew/homebrew-bundle" = homebrew-bundle;
-                "MediosZ/homebrew-tap" = aerospace-swipe;
-              };
-
-              mutableTaps = false;
-              autoMigrate = true;
-            };
-          }
-        ];
+        homeDirectory = "/Users/dani";
       };
     };
+
+    systemHelpers = import ./lib/system.nix {
+      inherit self inputs outputs users;
+    };
+  in {
+    formatter = systemHelpers.forEachSystem (system:
+      nix-formatter-pack.lib.mkFormatter {
+        pkgs = nixpkgs.legacyPackages.${system};
+
+        config.tools = {
+          alejandra.enable = true;
+          deadnix.enable = true;
+          statix.enable = true;
+        };
+      });
+    darwinConfigurations = {
+      "athena" = systemHelpers.mkDarwinConfiguration "athena" "dani";
+    };
+    homeConfigurations = {
+      "dani@athena" = systemHelpers.mkHomeConfiguration "aarch64-darwin" "dani" "athena";
+    };
+    overlays = import ./overlays {inherit inputs;};
+  };
 }

@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-let
+{pkgs, ...}: let
   filter_ls = path: ext: (
     builtins.map (name: path + "/${name}") (
       builtins.filter (name: builtins.match ".*\\.${ext}" name != null) (
@@ -19,21 +18,19 @@ let
   attrs_to_env_vars = attrs: (
     pkgs.lib.strings.concatLines (
       map
-        (key:
-          let
-            val = attrs."${key}";
-            strVal = builtins.toString val;
-          in
-          ''export ${key}="${strVal }"''
-        )
-        (builtins.attrNames attrs)
+      (
+        key: let
+          val = attrs."${key}";
+          strVal = builtins.toString val;
+        in ''export ${key}="${strVal}"''
+      )
+      (builtins.attrNames attrs)
     )
   );
 
   colorToHexWithOpacity = color: opacity: "0x${opacity}${color}";
   colorToHex = color: (colorToHexWithOpacity color "ff");
-in
-{
+in {
   inherit attrs_to_env_vars;
   inherit colorToHex;
   inherit colorToHexWithOpacity;

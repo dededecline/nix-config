@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env zsh
 
 # Check if gitconfig.user exists and has an email field with content
 if [ -f ~/.gitconfig.user ] && grep -E -q "email = .+" ~/.gitconfig.user; then
